@@ -7,5 +7,6 @@ class PhoneBook
         void    searchContact(int id);
         ~PhoneBook();
     private:
-        Contact contacts[8];
+        Contact _contacts[8];
+        int     _size;
 }
