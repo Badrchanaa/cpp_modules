@@ -1,6 +1,7 @@
 #include "Contact.hpp"
 #include <string>
 #include <iostream>
+#include <iomanip>
 
 Contact::Contact( void ): _lastName(""), _nickname(""), _phoneNumber("00000000000"), _secret("")
 {}
@@ -16,50 +17,44 @@ Contact &Contact::operator=(Contact const &ct)
     return *this;
 }
 
+void    Contact::print(void) const
+{
+    std::cout << "First name : " << this->_firstName << std::endl;
+    std::cout << "Last name : " << this->_lastName << std::endl;
+    std::cout << "Nickname : " << this->_nickname << std::endl;
+    std::cout << "Phone : " << this->_phoneNumber << std::endl;
+    std::cout << "Secret : " << this->_secret << std::endl;
+}
+
 void    Contact::_promptField(std::string prompt_msg, std::string &field)
 {
     std::cout << prompt_msg << std::flush;
     std::cin >> field;
 }
 
-void    Contact::print( void ) const
-{
-    std::cout << " | " << this->_firstName << " | " << this->_lastName << " | " << std::endl;
-}
-
-bool    Contact::promptFields( void )
-{
-    this->_promptField("First name: ", this->_firstName);
-    this->_promptField("Last name: ", this->_lastName);
-    this->_promptField("Nickname: ", this->_nickname);
-    this->_promptField("Phone: ", this->_phoneNumber);
-    this->_promptField("Secret: ", this->_secret);
-    return true;
-}
-
 /* GETTERS */
 
-std::string Contact::getFirstName( void )
+std::string Contact::getFirstName( void ) const
 {
     return this->_firstName;
 }
 
-std::string Contact::getLastName( void )
+std::string Contact::getLastName( void ) const
 {
     return this->_lastName;
 }
 
-std::string Contact::getNickname( void )
+std::string Contact::getNickname( void ) const
 {
     return this->_nickname;
 }
 
-std::string Contact::getPhoneNumber( void )
+std::string Contact::getPhoneNumber( void ) const
 {
     return this->_phoneNumber;
 }
 
-std::string Contact::getSecret( void )
+std::string Contact::getSecret( void ) const
 {
     return this->_secret;
 }

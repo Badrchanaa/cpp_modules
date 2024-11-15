@@ -2,7 +2,7 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 #include <iostream>
-
+#include <limits>
 
 void    printCommands(void)
 {
@@ -36,10 +36,8 @@ void    commandLoop(PhoneBook &phonebook)
     int size;
     while (true)
     {
-        std::cin.clear();
         cmd = "";
         std::cout << "Command : " << std::flush;
-        std::cin.ignore(256, '\n');
         std::cin >> cmd;
         if (cmd == "ADD")
         {
@@ -51,6 +49,7 @@ void    commandLoop(PhoneBook &phonebook)
         }
         else if (cmd == "SEARCH")
         {
+            phonebook.printContacts();
             contactp = phonebook.searchContact(promptIndex());
             if (!contactp)
                 std::cout << "Contact not found." << std::endl;
@@ -60,15 +59,15 @@ void    commandLoop(PhoneBook &phonebook)
         else if (cmd == "EXIT")
             break ;
         else
-            std::cout << "Unknown command." << std::endl;
+            std::cout << "Unknown command (size: " << cmd.length() << ")" << std::endl;
     }
 }
+
 
 int main(void)
 {
     PhoneBook phonebook;
     std::cout << "\033c" << std::flush;
-    std::cin >> std::noskipws;
     std::cout << "Welcome to Phonebook" << std::endl;
     printCommands();
     commandLoop(phonebook);

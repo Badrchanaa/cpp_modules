@@ -28,8 +28,11 @@ void    Dog::run() const
 
 int main()
 {
-    Animal a;
-    Animal *a2 = new Dog();
-    a2->run();
+    std::string str;
+    std::cin.unsetf(std::ios_base::skipws);
+    std::cin.ignore(999999, '\n');
+    std::cout << "Input : " << std::flush;
+    std::cin >> str;
+    std::cout << "typed " << str << "( " << str.length() << " )" << std::endl;
     return 0;
 }

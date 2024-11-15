@@ -8,13 +8,13 @@ class Contact
     public:
         Contact(void);
         Contact     &operator=(Contact const & ct);
-        void        print( void ) const;
         bool        promptFields(void);
-        std::string getFirstName(void);
-        std::string getLastName(void);
-        std::string getNickname(void);
-        std::string getPhoneNumber(void);
-        std::string getSecret(void);
+        void        print(void) const;
+        std::string getFirstName(void) const;
+        std::string getLastName(void) const;
+        std::string getNickname(void) const;
+        std::string getPhoneNumber(void) const;
+        std::string getSecret(void) const;
         void        setFirstName(std::string first_name);
         void        setLastName(std::string last_name);
         void        setNickname(std::string nickname);
