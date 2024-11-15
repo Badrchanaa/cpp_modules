@@ -1,8 +1,15 @@
+#ifndef __CONTACT_HPP__
+# define __CONTACT_HPP__
+
+# include <string>
 
 class Contact
 {
     public:
         Contact(void);
+        Contact     &operator=(Contact const & ct);
+        void        print( void ) const;
+        bool        promptFields(void);
         std::string getFirstName(void);
         std::string getLastName(void);
         std::string getNickname(void);
@@ -15,9 +22,12 @@ class Contact
         void        setSecret(std::string secret);
         ~Contact();
     private:
+        void        _promptField(std::string prompt_msg, std::string &field);
         std::string _firstName;
         std::string _lastName;
         std::string _nickname;
         std::string _phoneNumber;
         std::string _secret;
-}
+};
+
+#endif
