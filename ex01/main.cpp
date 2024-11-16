@@ -7,60 +7,84 @@
 void    printCommands(void)
 {
     std::cout << "Available commands :" << std::endl;
-    std::cout << " \tADD - Add a new contact" << std::endl;
-    std::cout << " \tSEARCH - search for a contact in the Phonebook" << std::endl;
-    std::cout << " \tEXIT - exit the Phonebook" << std::endl;
+    std::cout << "\tADD - Add a new contact" << std::endl;
+    std::cout << "\tSEARCH - Search for a contact in the Phonebook" << std::endl;
+    std::cout << "\tEXIT - Exit the Phonebook" << std::endl;
 }
 
-int    promptIndex(void)
+bool    promptIndex(int &id)
 {
-    int id; 
-    std::cout << "Contact index: " << std::flush;
+    std::cin >> std::noskipws;
+    std::cout << "Index> " << std::flush;
     std::cin >> id;
-    while (std::cin.fail())
+    while (std::cin.fail() && !std::cin.eof())
     {
         std::cin.clear();
-        std::cin.ignore(256, '\n');
-        std::cout << "Index must be a valid number between 0 and 7." << std::endl;
-        std::cout << "Contact index: " << std::flush;
+        std::cin.ignore(1024, '\n');
+        std::cout << "Please enter a valid integer." << std::endl;
+        std::cout << "Index> " << std::flush;
         std::cin >> id;
     }
-    return id;
+    std::cin.ignore(1024, '\n');
+    return std::cin.good();
+}
+
+
+void    handleSearch(PhoneBook &phonebook)
+{
+    Contact *contactp;
+    int id;
+
+    if (phonebook.getSize() == 0)
+    {
+        std::cout << "No contacts registered" << std::endl;
+        return ;
+    }
+    phonebook.printContacts();
+    contactp = NULL;
+    while (!contactp)
+    {
+        if (!promptIndex(id))
+            break ;
+        contactp = phonebook.searchContact(id);
+        if (!contactp)
+        {
+            std::cout << "Contact not found." << std::endl;
+            continue;
+        }
+        else
+            contactp->print();
+    }
 }
 
 void    commandLoop(PhoneBook &phonebook)
 {
     std::string cmd;
     Contact contact;
-    Contact *contactp;
     int size;
-    while (true)
+    while (!std::cin.eof())
     {
         cmd = "";
-        std::cout << "Command : " << std::flush;
-        std::cin >> cmd;
+        std::cout << "Command> " << std::flush;
+        std::getline(std::cin, cmd);
+        if (cmd.empty())
+            continue ;
         if (cmd == "ADD")
         {
             if (!contact.promptFields())
-                continue ;
+                break ;
             size = phonebook.addContact(contact);
             std::cout << "New contact added successfully" << std::endl;
-            std::cout << "Size : " << size << std::endl; 
+            std::cout << "Total contacts : " << size << std::endl; 
         }
         else if (cmd == "SEARCH")
-        {
-            phonebook.printContacts();
-            contactp = phonebook.searchContact(promptIndex());
-            if (!contactp)
-                std::cout << "Contact not found." << std::endl;
-            else
-                contactp->print();
-        }
+            handleSearch(phonebook);
         else if (cmd == "EXIT")
-            break ;
+            return ;
         else
-            std::cout << "Unknown command (size: " << cmd.length() << ")" << std::endl;
+            std::cout << "Unknown command" << std::endl;
     }
+    std::cout << std::endl;
 }
 
 

@@ -3,7 +3,6 @@
 #include <iomanip>
 
 PhoneBook::PhoneBook( void ): _size(0) {
-
 }
 
 int    PhoneBook::addContact(Contact contact) {
@@ -21,17 +20,7 @@ int    PhoneBook::addContact(Contact contact) {
     return this->_size;
 }
 
-bool    Contact::promptFields( void )
-{
-    this->_promptField("First name: ", this->_firstName);
-    this->_promptField("Last name: ", this->_lastName);
-    this->_promptField("Nickname: ", this->_nickname);
-    this->_promptField("Phone: ", this->_phoneNumber);
-    this->_promptField("Secret: ", this->_secret);
-    return true;
-}
-
-void    printFormatted(std::string const &str)
+void    PhoneBook::_printFormatted(std::string const &str)
 {
     std::cout << " | ";
     if (str.length() > 10)
@@ -42,7 +31,7 @@ void    printFormatted(std::string const &str)
 
 void    PhoneBook::printContacts( void ) const
 {
-    std::cout << "Contacts : " << this->_size << std::endl;
+    std::cout << "Total contacts: " << this->_size << std::endl;
     std::cout << " | ";
     std::cout << std::setw(10) << "Index";
     std::cout << " | ";
@@ -58,9 +47,9 @@ void    PhoneBook::printContacts( void ) const
         std::cout << " | ";
         curr = this->_contacts + i;
         std::cout << std::setw(10) << i;
-        printFormatted(curr->getFirstName());
-        printFormatted(curr->getLastName());
-        printFormatted(curr->getNickname());
+        PhoneBook::_printFormatted(curr->getFirstName());
+        PhoneBook::_printFormatted(curr->getLastName());
+        PhoneBook::_printFormatted(curr->getNickname());
         std::cout << " | " << std::endl;
     }
 }

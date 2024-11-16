@@ -12,6 +12,7 @@ class PhoneBook
 		int		getSize(void) const;
         ~PhoneBook();
     private:
+        static void    _printFormatted(std::string const &str);
         Contact _contacts[8];
         int     _size;
 };

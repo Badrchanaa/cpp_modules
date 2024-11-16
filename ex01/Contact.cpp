@@ -6,7 +6,6 @@
 Contact::Contact( void ): _lastName(""), _nickname(""), _phoneNumber("00000000000"), _secret("")
 {}
 
-
 Contact &Contact::operator=(Contact const &ct)
 {
     this->_firstName = ct._firstName;
@@ -17,19 +16,49 @@ Contact &Contact::operator=(Contact const &ct)
     return *this;
 }
 
-void    Contact::print(void) const
+bool    Contact::validPhoneNumber(std::string const &phoneNumber)
 {
-    std::cout << "First name : " << this->_firstName << std::endl;
-    std::cout << "Last name : " << this->_lastName << std::endl;
-    std::cout << "Nickname : " << this->_nickname << std::endl;
-    std::cout << "Phone : " << this->_phoneNumber << std::endl;
-    std::cout << "Secret : " << this->_secret << std::endl;
+    return phoneNumber.find_first_not_of("0123456789") == std::string::npos;
 }
 
 void    Contact::_promptField(std::string prompt_msg, std::string &field)
 {
+    if (std::cin.fail())
+        return ;
     std::cout << prompt_msg << std::flush;
-    std::cin >> field;
+    std::getline(std::cin, field);
+    while (field.empty())
+    {
+        std::cout << "Contact fields can't be empty." << std::endl;
+        std::cout << prompt_msg << std::flush;
+        std::getline(std::cin, field);
+    }
+}
+
+bool    Contact::promptFields( void )
+{
+    std::cout << "\033c" << std::flush;
+    this->_promptField("\tFirst name: ", this->_firstName);
+    this->_promptField("\tLast name: ", this->_lastName);
+    this->_promptField("\tNickname: ", this->_nickname);
+    this->_promptField("\tPhone: ", this->_phoneNumber);
+    while (!Contact::validPhoneNumber(this->_phoneNumber))
+    {
+        std::cout << "Phone number must contain only numbers." << std::endl;
+        this->_promptField("\tPhone: ", this->_phoneNumber);
+    }
+    this->_promptField("\tSecret: ", this->_secret);
+    std::cout << "\033c" << std::flush;
+    return std::cin.good();
+}
+
+void    Contact::print(void) const
+{
+    std::cout << "\tFirst name : " << this->_firstName << std::endl;
+    std::cout << "\tLast name : " << this->_lastName << std::endl;
+    std::cout << "\tNickname : " << this->_nickname << std::endl;
+    std::cout << "\tPhone : " << this->_phoneNumber << std::endl;
+    std::cout << "\tSecret : " << this->_secret << std::endl;
 }
 
 /* GETTERS */
