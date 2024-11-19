@@ -4,12 +4,8 @@
 int main()
 {
 	Harl harl1;
-	std::cout << "[DEBUG]" << std::endl;
-	harl1.complain("debug");
-	std::cout << "[INFO]" << std::endl;
-	harl1.complain("info");
-	std::cout << "[WARNING]" << std::endl;
-	harl1.complain("warning");
-	std::cout << "[ERROR]" << std::endl;
-	harl1.complain("error");
+	harl1.complain("DEBUG");
+	harl1.complain("INFO");
+	harl1.complain("WARNING");
+	harl1.complain("ERROR");
 }
