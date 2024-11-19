@@ -1,6 +1,9 @@
 #ifndef __PHONEBOOK_HPP__
 # define __PHONEBOOK_HPP__
-#include "Contact.hpp"
+
+#include <string>
+
+class Contact;
 
 class PhoneBook
 {
