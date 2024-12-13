@@ -16,10 +16,15 @@ Point& Point::operator=(const Point &cp) {
 	this->_y = cp._y;	
 }
 
+bool	Point::operator==(const Point &point)
+{
+	return point._x == this->_x && point._y == this->_y;
+}
+
 Point::Point(const float x, const float y)
 {
-	this->_x = Fixed(x);
-	this->_y = Fixed(y);
+	this->_x = (const Fixed) Fixed(x);
+	this->_y = (const Fixed) Fixed(y);
 }
 
 Point::~Point(void) {
