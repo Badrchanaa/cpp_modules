@@ -22,12 +22,12 @@ class Fixed
 		static Fixed	const &max(Fixed const &fx1, Fixed const &fx2);
 		static Fixed	&max(Fixed &fx1, Fixed &fx2);
 
-		bool	operator>(const Fixed &fx);
-		bool	operator<(const Fixed &fx);
-		bool	operator<=(const Fixed &fx);
-		bool	operator>=(const Fixed &fx);
-		bool	operator!=(const Fixed &fx);
-		bool	operator==(const Fixed &fx);
+		bool	operator>(const Fixed &fx) const;
+		bool	operator<(const Fixed &fx) const;
+		bool	operator<=(const Fixed &fx) const;
+		bool	operator>=(const Fixed &fx) const;
+		bool	operator!=(const Fixed &fx) const;
+		bool	operator==(const Fixed &fx) const;
 
 		Fixed	operator+(const Fixed &fx);
 		Fixed	operator-(const Fixed &fx);

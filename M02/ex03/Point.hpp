@@ -1,17 +1,19 @@
 #ifndef __POINT_HPP__
 # define __POINT_HPP__
+#include "Fixed.hpp"
 
 #include <string>
-#include "Fixed.hpp"
+
 
 class Point
 {
 	public:
 		Point(void);
 		Point(const float x, const float y);
-		Point(const Point &other);
-		Point& operator=(const Point &cp);
-		bool	operator==(const Point &point);
+		Point(Point &cp);
+		Point &operator=(Point &cp);
+		float	x() const;
+		float	y() const;
 		~Point();
 	private:
 		const Fixed _x;

@@ -2,29 +2,36 @@
 #include <iostream>
 #include <string>
 
-Point::Point(void) {
-	this->_x = Fixed(0);
-	this->_y = Fixed(0);
+Point::Point(void): _x(0), _y(0) {
 }
 
-Point::Point(const Point &cp) {
+Point::Point(const float x, const float y): _x(x), _y(y)
+{
+	std::cout << "this called" << x << y <<std::endl;
+}
+
+Point::Point(Point &cp)
+{
+	std::cout << "Cp called" << std::endl;
 	*this = cp;
 }
 
-Point& Point::operator=(const Point &cp) {
-	this->_x = cp._x;
-	this->_y = cp._y;	
+Point &Point::operator=(Point &cp)
+{
+	(void)cp;
+	*((Fixed *) &this->_x) = cp._x;
+	*((Fixed *) &this->_y) = cp._y;
+	return *this;
 }
 
-bool	Point::operator==(const Point &point)
+float Point::x() const
 {
-	return point._x == this->_x && point._y == this->_y;
+	return this->_x.toFloat();
 }
 
-Point::Point(const float x, const float y)
+float Point::y() const
 {
-	this->_x = (const Fixed) Fixed(x);
-	this->_y = (const Fixed) Fixed(y);
+	return this->_y.toFloat();
 }
 
 Point::~Point(void) {

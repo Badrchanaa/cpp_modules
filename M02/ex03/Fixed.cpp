@@ -9,17 +9,17 @@ Fixed::Fixed(void): _value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-bool	Fixed::operator!=(Fixed const &fx)
+bool	Fixed::operator!=(Fixed const &fx) const
 {
 	return this->toFloat() != fx.toFloat();
 }
 
-bool	Fixed::operator<(Fixed const &fx)
+bool	Fixed::operator<(Fixed const &fx) const
 {
 	return this->toFloat() < fx.toFloat();
 }
 
-bool	Fixed::operator>(Fixed const &fx)
+bool	Fixed::operator>(Fixed const &fx) const
 {
 	return this->toFloat() > fx.toFloat();
 }
@@ -52,17 +52,17 @@ Fixed &Fixed::min(Fixed &fx1, Fixed &fx2)
 	return fx2;
 }
 
-bool	Fixed::operator<=(Fixed const &fx)
+bool	Fixed::operator<=(Fixed const &fx) const
 {
 	return this->toFloat() <= fx.toFloat();
 }
 
-bool	Fixed::operator>=(Fixed const &fx)
+bool	Fixed::operator>=(Fixed const &fx) const
 {
 	return this->toFloat() >= fx.toFloat();
 }
 
-bool	Fixed::operator==(Fixed const &fx)
+bool	Fixed::operator==(Fixed const &fx) const
 {
 	return this->toFloat() == fx.toFloat();
 }
@@ -112,20 +112,20 @@ float	Fixed::operator--()
 
 Fixed::Fixed(const Fixed &fx)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called " << fx.toFloat() << std::endl;
 	*this = fx;
 }
 
 Fixed::Fixed(const int i)
 {
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << "Int constructor called " << i << std::endl;
 	this->_value = i << Fixed::_pointPos;
 }
 
 Fixed::Fixed(const float f)
 {
 	int	e = 1 << Fixed::_pointPos;
-	std::cout << "Float constructor called" << std::endl;
+	std::cout << "Float constructor called" << f << std::endl;
 	this->_value = (int) roundf((f * e));
 }
 
