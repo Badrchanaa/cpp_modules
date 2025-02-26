@@ -1,7 +1,4 @@
 #include "Zombie.hpp"
-#include <iostream>
-#include <sstream>
-#include <cstdlib>
 
 int main()
 {

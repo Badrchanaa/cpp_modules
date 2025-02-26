@@ -2,7 +2,6 @@ CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = mySed
 SRCS = main.cpp
-HEADERS =
 
 all: $(NAME)
 

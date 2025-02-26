@@ -1,13 +1,13 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = attack
-CFILES = Weapon.cpp main.cpp HumanA.cpp HumanB.cpp
-HEADERS = Zombie.hpp
+SRCS = Weapon.cpp main.cpp HumanA.cpp HumanB.cpp
+HEADERS = HumanA.hpp HumanB.hpp Weapon.hpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -o $@
+$(NAME): $(CFILES) $(HEADERS)
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:
 	rm -f $(NAME)
