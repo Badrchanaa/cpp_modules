@@ -3,7 +3,6 @@
 
 Zombie::Zombie(void)
 {
-	std::cout << "hello" << std::endl;
 }
 
 void	Zombie::setName(std::string const name)
@@ -13,7 +12,6 @@ void	Zombie::setName(std::string const name)
 
 Zombie::Zombie(std::string name): _name(name)
 {
-	std::cout << "hello" << std::endl;
 }
 
 void	Zombie::announce(void)

@@ -9,26 +9,25 @@
 int	sed(std::ifstream &ifile, std::ofstream &ofile, std::string &oldStr, std::string &newStr)
 {
 	std::string		line;
-	std::string		ifcontent;
+	std::string		fileContent;
 	size_t			pos;
 	size_t			index;
 
 	while(std::getline(ifile, line))
-		ifcontent += line + "\n";
+		fileContent += line + "\n";
 	index = 0;
 	if (oldStr.empty() || oldStr == newStr)
 		pos = std::string::npos;
 	else
-		pos = ifcontent.find(oldStr, index);
+		pos = fileContent.find(oldStr, index);
 	while (pos != std::string::npos)
 	{
 		index = pos + newStr.length();
-		//std::cout << index << std::endl;
-		ifcontent.erase(pos, oldStr.length());
-		ifcontent.insert(pos, newStr);
-		pos = ifcontent.find(oldStr, index);
+		fileContent.erase(pos, oldStr.length());
+		fileContent.insert(pos, newStr);
+		pos = fileContent.find(oldStr, index);
 	}
-	ofile << ifcontent << std::endl;
+	ofile << fileContent << std::endl;
 	return (0);
 }
 
@@ -46,13 +45,15 @@ int	main(int ac, char *av[])
 	ifile.open(av[1]);
 	if (!ifile)
 	{
-		std::cout << "couldn't open input file" << std::endl;
+		std::cout << "Cannot open input file" << std::endl;
 		return 0;
 	}
-	ofile.open("out.txt");
+	std::string newName = av[1];
+	newName += ".replace";
+	ofile.open(newName.c_str());
 	if (!ofile)
 	{
-		std::cout << "Couldn't open output file" << std::endl;
+		std::cout << "Cannot open output file" << std::endl;
 		return 0;
 	}
 	sed(ifile, ofile, oldStr, newStr);

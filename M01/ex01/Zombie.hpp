@@ -2,6 +2,7 @@
 # define __ZOMBIE_HPP__
 
 #include <string>
+#include <iomanip>
 
 class Zombie {
 	public:
@@ -14,5 +15,7 @@ class Zombie {
 	private:
 		std::string _name;
 };
+
+Zombie* zombieHorde( int N, std::string name );
 
 #endif
