@@ -1,6 +1,7 @@
 
 #ifndef __HUMAN_A_HPP__
 # define __HUMAN_A_HPP__
+
 #include <string>
 
 class Weapon;

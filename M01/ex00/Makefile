@@ -1,13 +1,13 @@
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = zombies
-CFILES = Zombie.cpp main.cpp randomChump.cpp newZombie.cpp
+SRCS = Zombie.cpp main.cpp randomChump.cpp newZombie.cpp
 HEADERS = Zombie.hpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -o $@
+$(NAME): $(SRCS) $(HEADERS)
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:
 	rm -f $(NAME)

@@ -12,7 +12,7 @@ class Harl
 {
 	public:
 		Harl(void);
-		static	int	strtoint(std::string level);
+		static	enum Level	strtoint(std::string level);
 		void	complain(enum Level lvl) const;
 		~Harl(void);
 	private:

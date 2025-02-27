@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 /*
 	replaces each occurence of oldStr in ifile (input file) by 
@@ -35,26 +36,30 @@ int	main(int ac, char *av[])
 {
 	if (ac < 4)
 	{
-		std::cout << "invalid arguments" << std::endl;
-		return 0;
+		std::cout << "invalid arguments." << std::endl;
+		std::cout << "Usage: ./mySed <filename> <old_str> <new_str>" << std::endl;
+		return 1;
 	}
+
 	std::ifstream ifile;
 	std::ofstream ofile;
 	std::string oldStr(av[2]);
 	std::string newStr(av[3]);
+
 	ifile.open(av[1]);
 	if (!ifile)
 	{
 		std::cout << "Cannot open input file" << std::endl;
-		return 0;
+		return 1;
 	}
+
 	std::string newName = av[1];
 	newName += ".replace";
 	ofile.open(newName.c_str());
 	if (!ofile)
 	{
 		std::cout << "Cannot open output file" << std::endl;
-		return 0;
+		return 1;
 	}
 	sed(ifile, ofile, oldStr, newStr);
 	ifile.close();

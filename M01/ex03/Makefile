@@ -6,7 +6,7 @@ HEADERS = HumanA.hpp HumanB.hpp Weapon.hpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES) $(HEADERS)
+$(NAME): $(SRCS) $(HEADERS)
 	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:

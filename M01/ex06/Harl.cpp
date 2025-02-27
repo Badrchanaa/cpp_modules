@@ -5,7 +5,7 @@ Harl::Harl()
 {
 }
 
-int	Harl::strtoint(std::string level)
+enum Level	Harl::strtoint(std::string level)
 {
 	const char	*levels[4] = {
 		"DEBUG",
@@ -13,10 +13,10 @@ int	Harl::strtoint(std::string level)
 		"WARNING",
 		"ERROR"
 	};
-	for (int i = 0; i < 4; i++)
+	for (int i = DEBUG; i <= ERROR; i++)
 		if (level == std::string(levels[i]))
-			return i + 1;
-	return 0;
+			return (enum Level) (i + 1);
+	return (enum Level) 0;
 }
 
 void	Harl::complain(enum Level lvl) const

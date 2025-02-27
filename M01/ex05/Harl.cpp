@@ -3,7 +3,6 @@
 
 Harl::Harl()
 {
-
 }
 
 int	Harl::strtoint(std::string level)
