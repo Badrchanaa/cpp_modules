@@ -1,10 +1,10 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
 int main()
 {
-    ScavTrap khabib("The eagle");
-    ScavTrap conor("mcchicken");
+    FragTrap khabib("The eagle");
+    FragTrap conor("mcchicken");
 
     std::cout << "------------- MAIN START --------------" << std::endl;
     conor.attack("The eagle");
@@ -13,7 +13,7 @@ int main()
     conor.takeDamage(khabib.getAttackDamage());
     conor.beRepaired(5);
     conor.attack("The eagle");
-    conor.guardGate();
+    conor.highFivesGuys();
     std::cout << "------------- MAIN END --------------" << std::endl;
     return 0;
 }
