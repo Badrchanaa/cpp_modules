@@ -1,13 +1,13 @@
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = bank
-CFILES = tests.cpp Account.cpp
+SRCS = tests.cpp Account.cpp
 HEADERS = Account.hpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -o $@
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:
 	rm -f $(NAME)

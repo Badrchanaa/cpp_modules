@@ -1,12 +1,12 @@
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = megaphone
-CFILES = megaphone.cpp
+SRCS = megaphone.cpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -o $@
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:
 	rm -f $(NAME)

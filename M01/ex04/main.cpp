@@ -28,7 +28,7 @@ int	sed(std::ifstream &ifile, std::ofstream &ofile, std::string &oldStr, std::st
 		fileContent.insert(pos, newStr);
 		pos = fileContent.find(oldStr, index);
 	}
-	ofile << fileContent << std::endl;
+	ofile << fileContent;
 	return (0);
 }
 
@@ -47,6 +47,11 @@ int	main(int ac, char *av[])
 	std::string newStr(av[3]);
 
 	ifile.open(av[1]);
+	if(!ifile.is_open())
+	{
+		std::cout << "Cannot open input file (dir)" << std::endl;
+		return 1;
+	}
 	if (!ifile)
 	{
 		std::cout << "Cannot open input file" << std::endl;

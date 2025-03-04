@@ -2,10 +2,9 @@
 # define __SCAV_TRAP_HPP__
 
 #include "ClapTrap.hpp"
-
 #include <string>
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
 	public:
 		ScavTrap(std::string name);

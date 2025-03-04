@@ -67,9 +67,9 @@ int ClapTrap::getAttackDamage()
     return this->attack_damage;
 }
 
-void ClapTrap::setAttackDamage(unsigned int attack_damage)
+void ClapTrap::setAttackDamage(unsigned int damage)
 {
-    this->attack_damage = attack_damage;
+    this->attack_damage = damage;
 }
 
 ClapTrap::~ClapTrap(){

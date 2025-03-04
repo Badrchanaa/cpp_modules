@@ -1,11 +1,12 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = claptrap
-SRCS = ClapTrap.cpp
+NAME = animals
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp
+HEADERS = Animal.hpp Dog.hpp Cat.hpp
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
+$(NAME): $(SRCS) $(HEADERS)
 	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:

@@ -20,11 +20,6 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &cp) {
 	return *this;
 }
 
-void	ScavTrap::guardGate()
-{
-	std::cout << "ScavTrap " << name << " is now in gate keeper mode." << std::endl;
-}
-
 void	ScavTrap::attack(const std::string &target)
 {
     if (energy <= 0 || hit_points <= 0)
@@ -33,6 +28,11 @@ void	ScavTrap::attack(const std::string &target)
     std::cout << "ScavTrap " << this->name << " attacks " << target \
         << ", causing " << this->attack_damage << " points of damage!";
     std::cout << std::endl;
+}
+
+void	ScavTrap::guardGate()
+{
+	std::cout << "ScavTrap " << name << " is now in gate keeper mode." << std::endl;
 }
 
 ScavTrap::~ScavTrap(void) {

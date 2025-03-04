@@ -1,13 +1,13 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = fragtrap
-CFILES = main.cpp ClapTrap.cpp FragTrap.cpp
-HEADERS = ClapTrap.hpp FragTrap.hpp
+NAME = diamondtrap
+SRCS = main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp DiamondTrap.cpp
+HEADERS = ClapTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -o $@
+$(NAME): $(SRCS) $(HEADERS)
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:
 	rm -f $(NAME)
