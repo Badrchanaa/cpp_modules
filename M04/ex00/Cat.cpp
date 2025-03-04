@@ -3,10 +3,11 @@
 #include <string>
 
 Cat::Cat(void): Animal("Cat") {
-	std::cout << "A new cat appeared"	
+	std::cout << "A new cat appeared" << std::endl;
 }
 
 Cat::Cat(const Cat &other): Animal("Cat") {
+	std::cout << "A cloned cat appeared" << std::endl;
 	*this = other;	
 }
 
@@ -23,5 +24,5 @@ void	Cat::makeSound() const
 }
 
 Cat::~Cat(void) {
-	
+	std::cout << "a Cat disappeared" << std::endl;
 }

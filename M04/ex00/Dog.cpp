@@ -7,6 +7,7 @@ Dog::Dog(void): Animal("Dog") {
 }
 
 Dog::Dog(const Dog &other): Animal("Dog") {
+	std::cout << "A cloned Dog appeared" << std::endl;
 	*this = other;	
 }
 

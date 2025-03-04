@@ -2,11 +2,12 @@
 #include <iostream>
 #include <string>
 
-WrongCat::WrongCat(void): WrongAnimal("Cat") {
-		
+WrongCat::WrongCat(void): WrongAnimal("WrongCat") {
+	std::cout << "A WrongCat has appeared" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &other): WrongAnimal("Cat") {
+WrongCat::WrongCat(const WrongCat &other): WrongAnimal("WrongCat") {
+	std::cout << "A cloned WrongCat has appeared" << std::endl;
 	*this = other;	
 }
 
@@ -23,5 +24,5 @@ void	WrongCat::makeSound() const
 }
 
 WrongCat::~WrongCat(void) {
-	
+	std::cout << "a WrongCat disappeared."	<< std::endl;
 }
