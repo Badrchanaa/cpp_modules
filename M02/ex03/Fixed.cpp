@@ -6,7 +6,7 @@ const int Fixed::_pointPos = 8;
 
 Fixed::Fixed(void): _value(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 }
 
 bool	Fixed::operator!=(Fixed const &fx) const
@@ -77,6 +77,11 @@ Fixed	Fixed::operator+(Fixed const &fx)
 	return Fixed(this->toFloat() + fx.toFloat());
 }
 
+Fixed	Fixed::operator-(Fixed const &fx)
+{
+	return Fixed(this->toFloat() - fx.toFloat());
+}
+
 Fixed	Fixed::operator/(Fixed const &fx)
 {
 	return Fixed(this->toFloat() / fx.toFloat());
@@ -112,20 +117,20 @@ float	Fixed::operator--()
 
 Fixed::Fixed(const Fixed &fx)
 {
-	std::cout << "Copy constructor called " << fx.toFloat() << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 	*this = fx;
 }
 
 Fixed::Fixed(const int i)
 {
-	std::cout << "Int constructor called " << i << std::endl;
+	// std::cout << "Int constructor called with value" << i << std::endl;
 	this->_value = i << Fixed::_pointPos;
 }
 
 Fixed::Fixed(const float f)
 {
 	int	e = 1 << Fixed::_pointPos;
-	std::cout << "Float constructor called" << f << std::endl;
+	// std::cout << "Float constructor called with value" << f << std::endl;
 	this->_value = (int) roundf((f * e));
 }
 
@@ -136,15 +141,11 @@ int	Fixed::toInt(void) const
 
 float	Fixed::toFloat(void) const
 {
-	float f;
-	int	e = 1 << this->_pointPos;
-	f = (float) this->_value / e;
-	return (f);
+	return (float) this->_value / (1 << this->_pointPos);
 }
 
 int	Fixed::getRawBits( void ) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return this->_value;
 }
  
@@ -156,7 +157,7 @@ std::ostream &operator<<(std::ostream &os, const Fixed &fx)
 
 Fixed	&Fixed::operator=(const Fixed &fx)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	this->_value = fx.getRawBits();
 	return *this;
 }
@@ -168,5 +169,5 @@ void	Fixed::setRawBits(const int raw)
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }

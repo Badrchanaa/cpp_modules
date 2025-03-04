@@ -1,22 +1,30 @@
 #include "Point.hpp"
 #include <iostream>
 
+float	ft_abs(float x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+
+// calculates and returns the area of the triangle formed by the points a, b, and c
+static float	calcArea(Point const &a, Point const &b, Point const &c)
+{
+	return (0.5 * ft_abs(a.x() * (b.y() - c.y()) + b.x() * (c.y() - a.y()) + c.x() * (a.y() - b.y())));
+}
+
 bool	bsp(Point const a, Point const b, Point const c, Point const point)
 {
-	// Check if points form a valid triangle ??
-	(void)point;
-	// point is a vertex
-	float area = a.x() * (b.y() - c.y()) + b.x() * (c.y() - a.y()) + c.x() * (a.y() - b.y());
-	// not a valid triangle
-	std::cout << "a(" << a.x() << ", " << a.y() << ")" << std::endl; 
-	std::cout << "b(" << b.x() << ", " << b.y() << ")" << std::endl; 
-	std::cout << "c(" << c.x() << ", " << c.y() << ")" << std::endl; 
-	if (area == 0)
+	float	abcArea = calcArea(a, b, c);
+	float	abpArea = calcArea(a, b, point);
+	float 	apcArea = calcArea(a, point, c);
+	float	bpcArea = calcArea(b, point ,c);
+
+	if (abcArea == 0)
 	{
-		std::cout << "not a valid triangle" << std::endl;
+		std::cout << "ABC does not form a valid triangle" << std::endl;
 		return false;
 	}
-	else
-		std::cout << "valid triangle (area = " << area << ")" << std::endl;
-	return false;
+	return (abcArea >= (abpArea + apcArea + bpcArea));
 }

@@ -1,12 +1,12 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = fixedpoint
-CFILES = main.cpp Fixed.cpp
+SRCS = main.cpp Fixed.cpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -I./ -o $@
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -I./ -o $@
 
 clean:
 	rm -f $(NAME)

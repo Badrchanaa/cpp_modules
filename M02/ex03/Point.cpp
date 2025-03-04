@@ -7,12 +7,10 @@ Point::Point(void): _x(0), _y(0) {
 
 Point::Point(const float x, const float y): _x(x), _y(y)
 {
-	std::cout << "this called" << x << y <<std::endl;
 }
 
 Point::Point(Point &cp)
 {
-	std::cout << "Cp called" << std::endl;
 	*this = cp;
 }
 

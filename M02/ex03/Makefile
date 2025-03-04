@@ -1,12 +1,13 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = bsp
-CFILES = main.cpp Fixed.cpp Point.cpp bsp.cpp
+SRCS = main.cpp Fixed.cpp Point.cpp bsp.cpp
+HEADERS = Fixed.hpp Point.hpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -I./ -o $@
+$(NAME): $(SRCS) $(HEADERS)
+	$(CC) $(CFLAGS) $(SRCS) -I./ -o $@
 
 clean:
 	rm -f $(NAME)

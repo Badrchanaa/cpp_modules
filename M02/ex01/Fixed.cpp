@@ -18,13 +18,13 @@ Fixed::Fixed(const Fixed &fx)
 Fixed::Fixed(const int i)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_value = i << 8;
+	this->_value = i << this->_pointPos;
 }
 
 Fixed::Fixed(const float f)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_value = (int) roundf((f * 256));
+	this->_value = (int) roundf((f * (1 << this->_pointPos)));
 }
 
 int	Fixed::toInt(void) const
@@ -42,7 +42,6 @@ float	Fixed::toFloat(void) const
 
 int	Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->_value;
 }
  

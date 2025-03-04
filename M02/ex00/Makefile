@@ -1,13 +1,13 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = firstCanon
-CFILES = main.cpp Fixed.cpp
+SRCS = main.cpp Fixed.cpp
 HEADERS = Fixed.hpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -o $@
+$(NAME): $(SRCS) $(HEADERS)
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:
 	rm -f $(NAME)
