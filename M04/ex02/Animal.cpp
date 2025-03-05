@@ -27,15 +27,10 @@ std::string Animal::getType() const
 	return this->type;
 }
 
-Brain *Animal::getBrain() const
-{
-	return NULL;
-}
-
-void	Animal::makeSound() const
-{
-	std::cout << "(Animal sound)" << std::endl;
-}
+// void	Animal::makeSound() const
+// {
+// 	std::cout << "(Animal sound)" << std::endl;
+// }
 
 Animal::~Animal(void) {
 	std::cout << "An Animal went missing" << std::endl;
