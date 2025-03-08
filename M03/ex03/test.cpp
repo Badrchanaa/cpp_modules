@@ -1,39 +1,28 @@
 #include <iostream>
 
-class A{
-    private:
-    int x;
+
+class A
+{
     public:
-        int y;
-        int getX()
+        virtual void test()
         {
-            return this->x;
+            std::cout << "A test" << std::endl;
         }
+        int x = 10;
 };
 
-class B: virtual public A {
-    private:
-    int x;
+class B: public A
+{
     public:
-        int y;
-};
-
-class C: virtual public A{
-    private:
-    int x;
-    public:
-        int y;
-};
-
-class D: public B, public C{
-    private:
-    int x;
-    public:
-        int y;
+        int x = 1;
 };
 
 int main()
 {
-    D d;
-    std::cout << d.getX() << std::endl;
+    A* pb = new B();
+    B b;
+    b.test();
+
+	std::cout << b.x << std::endl;
+    std::cout << pb->x << std::endl;
 }

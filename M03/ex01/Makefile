@@ -6,7 +6,7 @@ HEADERS = ClapTrap.hpp ScavTrap.hpp
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
+$(NAME): $(CFILES) $(HEADERS)
 	$(CC) $(CFLAGS) $(CFILES) -o $@
 
 clean:

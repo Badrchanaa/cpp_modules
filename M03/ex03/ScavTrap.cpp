@@ -6,6 +6,11 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name, 100, 50, 20) {
 	std::cout << "ScavTrap constructor called" << std::endl;
 }
 
+ScavTrap::ScavTrap(): ClapTrap("", 100, 50, 20)
+{
+	std::cout << "ScavTrap default constructor called" << std::endl;
+}
+
 ScavTrap::ScavTrap(const ScavTrap &other): ClapTrap(other) {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
 }

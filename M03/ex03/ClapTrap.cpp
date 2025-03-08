@@ -6,6 +6,11 @@ ClapTrap::ClapTrap(std::string name): name(name), hit_points(10), energy(10), at
     std::cout << "ClapTrap name constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap()
+{
+    std::cout << "ClapTrap default constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(const ClapTrap &ct) 
 {
     *this = ct;
@@ -36,7 +41,7 @@ void    ClapTrap::attack(const std::string &target)
     if (energy <= 0 || hit_points <= 0)
         return ;
     this->energy--;
-    std::cout << "ClapTrap " << this->name << " attacks " << target \
+    std::cout << "ClapTrap " << this->name << " attacks " << target 
         << ", causing " << this->attack_damage << " points of damage!";
     std::cout << std::endl;
 }
@@ -47,9 +52,10 @@ void    ClapTrap::takeDamage(unsigned int amount)
         return ;
     this->hit_points -= amount;
     std::cout << "ClapTrap " << this->name << " takes " << amount \
-        << " damage." << std::endl;
+        << " damage";
     if (this->hit_points <= 0)
-        std::cout << "ClapTrap " << name << " is dead." << std::endl;
+        std::cout << " (died).";
+    std::cout << std::endl;
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
