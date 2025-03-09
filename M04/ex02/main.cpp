@@ -16,6 +16,8 @@ int main()
 		std::cout << "shallow copy" << std::endl;
 	else
 		std::cout << "deep copy" << std::endl;
+
+	// AAnimal should_not_compile;
 	std::cout << "----- MAIN END ------" << std::endl;
 	delete dog;//should not create a leak
 	delete cat;

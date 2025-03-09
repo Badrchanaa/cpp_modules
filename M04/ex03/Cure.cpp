@@ -5,7 +5,7 @@
 
 Cure::Cure(void): AMateria("cure")
 {
-	
+	std::cout << "Cure constructor called" << std::endl;
 }
 
 Cure::Cure(const Cure &other): AMateria("cure")
@@ -32,12 +32,7 @@ void	 Cure::use(ICharacter &target)
 	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
-std::string const &Cure::getType() const
-{
-	return type;
-}
-
 Cure::~Cure(void)
 {
-	
+	std::cout << "Cure constructor called" << std::endl;
 }

@@ -5,6 +5,7 @@
 
 Ice::Ice(void): AMateria("ice")
 {
+	std::cout << "Ice constructor called" << std::endl;
 }
 
 Ice::Ice(const Ice &other): AMateria("ice")
@@ -31,11 +32,7 @@ void	 Ice::use(ICharacter &target)
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
-std::string const &Ice::getType() const
-{
-	return type;
-}
-
 Ice::~Ice(void)
 {
+	std::cout << "Ice destructor called" << std::endl;
 }

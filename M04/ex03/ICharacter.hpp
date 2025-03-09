@@ -2,7 +2,6 @@
 # define __ICHARACTER_HPP__
 
 #include "AMateria.hpp"
-// class AMateria;
 #include <string>
 
 
