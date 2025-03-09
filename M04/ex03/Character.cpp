@@ -27,7 +27,7 @@ Character& Character::operator=(const Character &cp) {
 	{
 		delete inventory[i];
 		inventory[i] = NULL;
-		tmp = cp.getInventoryItem(i);
+		tmp = cp.inventory[i];
 		if (!tmp)
 			continue;	
 		if (tmp->getType() == "cure")
@@ -36,7 +36,7 @@ Character& Character::operator=(const Character &cp) {
 			inventory[i] = new Ice();
 		else
 			continue;
-		*inventory[i] = *tmp;
+		*inventory[i] = *tmp;// 
 	}
 	return *this;
 }
@@ -57,13 +57,6 @@ void Character::unequip(int idx)
 	if (idx < 0 || idx >= INVENTORY_SIZE || !inventory[idx])
 		return;
 	inventory[idx] = NULL;
-}
-
-AMateria*	Character::getInventoryItem(int idx) const
-{
-	if (idx < 0 || idx >= INVENTORY_SIZE || !inventory[idx])
-		return NULL;
-	return inventory[idx];
 }
 
 void Character::use(int idx, ICharacter& target)

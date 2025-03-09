@@ -1,11 +1,11 @@
 #ifndef __DOG_HPP__
 # define __DOG_HPP__
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 #include <string>
 
-class Dog: public Animal
+class Dog: public AAnimal
 {
 	public:
 		Dog(void);

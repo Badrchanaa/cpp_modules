@@ -5,8 +5,8 @@
 int main()
 {
 	const Dog* dog = new Dog();
-	const Animal* cat = new Cat();
-	const Animal *copyDog = new Dog(*dog);	
+	const AAnimal* cat = new Cat();
+	const AAnimal *copyDog = new Dog(*dog);	
 	
 	std::cout << "----- MAIN START ------" << std::endl;
 	for (int i = 0; i < 99; i++)

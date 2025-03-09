@@ -13,7 +13,6 @@ class Character: public ICharacter
 		Character(const Character &other);
 		Character& operator=(const Character &cp);
 		std::string const & getName() const;
-		AMateria*	getInventoryItem(int idx) const;
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);

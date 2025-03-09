@@ -2,12 +2,12 @@
 #include <iostream>
 #include <string>
 
-Dog::Dog(void): Animal("Dog") {
+Dog::Dog(void): AAnimal("Dog") {
 	std::cout << "A new Dog appeared" << std::endl;
 	this->brain = new Brain();
 }
 
-Dog::Dog(const Dog &other): Animal("Dog") {
+Dog::Dog(const Dog &other): AAnimal("Dog") {
 	std::cout << "A cloned Dog appeared" << std::endl;
 	this->brain = new Brain();
 	*this = other;	

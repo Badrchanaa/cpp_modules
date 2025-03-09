@@ -1,28 +1,28 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include <iostream>
 #include <string>
 
-Animal::Animal(void) {
+AAnimal::AAnimal(void) {
 	std::cout << "A new Animal appeared" << std::endl;
 }
 
-Animal::Animal(const std::string &type): type(type) {
+AAnimal::AAnimal(const std::string &type): type(type) {
 	std::cout << "A new Animal appeared of type: " << type << std::endl;
 }
 
-Animal::Animal(const Animal &other) {
+AAnimal::AAnimal(const AAnimal &other) {
 	std::cout << "A cloned Animal appeared" << std::endl;
 	*this = other;
 }
 
-Animal& Animal::operator=(const Animal &cp) {
+AAnimal& AAnimal::operator=(const AAnimal &cp) {
 	if (this == &cp)
 		return *this;
 	this->type = cp.type;
 	return *this;
 }
 
-std::string Animal::getType() const
+std::string AAnimal::getType() const
 {
 	return this->type;
 }
@@ -32,6 +32,6 @@ std::string Animal::getType() const
 // 	std::cout << "(Animal sound)" << std::endl;
 // }
 
-Animal::~Animal(void) {
+AAnimal::~AAnimal(void) {
 	std::cout << "An Animal went missing" << std::endl;
 }
