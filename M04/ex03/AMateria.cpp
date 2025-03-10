@@ -3,16 +3,16 @@
 #include <string>
 
 AMateria::AMateria(void) {
-	std::cout << "AMateria constructor called" << std::endl;
+	// std::cout << "AMateria constructor called" << std::endl;
 }
 
 AMateria::AMateria(std::string const &type): type(type)
 {
-	std::cout << "AMateria constructor called" << std::endl;
+	// std::cout << "AMateria constructor called" << std::endl;
 }
 
 AMateria::AMateria(const AMateria &other) {
-	std::cout << "AMateria copy constructor called" << std::endl;
+	// std::cout << "AMateria copy constructor called" << std::endl;
 	(void)other;	
 }
 
@@ -32,5 +32,5 @@ void	 AMateria::use(ICharacter &target)
 }
 
 AMateria::~AMateria(void) {
-	std::cout << "AMateria destructor called" << std::endl;
+	// std::cout << "AMateria destructor called" << std::endl;
 }

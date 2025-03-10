@@ -6,7 +6,7 @@
 
 MateriaSource::MateriaSource(void)
 {
-	std::cout << "MateriaSource constructor called" << std::endl;
+	// std::cout << "MateriaSource constructor called" << std::endl;
 	for (int i = 0; i < MS_INVENTORY_SIZE; i++)	
 	{
 		inventory[i] = NULL;
@@ -15,6 +15,7 @@ MateriaSource::MateriaSource(void)
 
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
+	// std::cout << "MateriaSource copy constructor called" << std::endl;
 	*this = other;	
 }
 	
@@ -85,7 +86,7 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 
 MateriaSource::~MateriaSource(void)
 {
-	std::cout << "MateriaSource destructor called" << std::endl;
+	// std::cout << "MateriaSource destructor called" << std::endl;
 	for (int i = 0; i < MS_INVENTORY_SIZE; i++)
 		delete inventory[i];
 }

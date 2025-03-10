@@ -31,12 +31,23 @@ int main()
 	}
 		std::cout << " -------- SCOPE END ---------" << std::endl;
 	{
+		MateriaSource *src = new MateriaSource();
+		src->learnMateria(new Cure());
+		MateriaSource src2;
+		src2 = *src;
+		delete src;
+
 		std::cout << " -------- SCOPE START ---------" << std::endl;
 		Character c("cname");
 		Character b("bname");
 		std::cout << c.getName() << std::endl;
 		std::cout << b.getName() << std::endl;
 		c = b;
+		c.equip(src2.createMateria("cure"));
+		AMateria *materia = src2.createMateria("unknown");
+		if (materia)
+			std::cout << "unknown type" << std::endl;
+		c.use(0, b);
 		std::cout << c.getName() << std::endl;
 	}
 		std::cout << " -------- SCOPE END ---------" << std::endl;

@@ -5,11 +5,12 @@
 
 Cure::Cure(void): AMateria("cure")
 {
-	std::cout << "Cure constructor called" << std::endl;
+	// std::cout << "Cure constructor called" << std::endl;
 }
 
 Cure::Cure(const Cure &other): AMateria("cure")
 {
+	// std::cout << "Cure copy constructor called" << std::endl;
 	*this = other;	
 }
 
@@ -34,5 +35,5 @@ void	 Cure::use(ICharacter &target)
 
 Cure::~Cure(void)
 {
-	std::cout << "Cure constructor called" << std::endl;
+	// std::cout << "Cure constructor called" << std::endl;
 }

@@ -5,20 +5,20 @@
 #include <string>
 
 Character::Character(void) {
-	std::cout << "Character constructor called" << std::endl;
+	// std::cout << "Character constructor called" << std::endl;
 	for (int i = 0; i < INVENTORY_SIZE; i++)
 		this->inventory[i] = NULL;
 }
 
 Character::Character(std::string const &name): name(name)
 {
-	std::cout << "Character constructor called" << std::endl;
+	// std::cout << "Character constructor called" << std::endl;
 	for (int i = 0; i < INVENTORY_SIZE; i++)
 		this->inventory[i] = NULL;
 }
 
 Character::Character(const Character &other) {
-	std::cout << "Character copy constructor called" << std::endl;
+	// std::cout << "Character copy constructor called" << std::endl;
 	*this = other;	
 }
 
@@ -76,7 +76,7 @@ std::string const & Character::getName() const
 }
 
 Character::~Character(void) {
-	std::cout << "Character destructor called" << std::endl;
+	// std::cout << "Character destructor called" << std::endl;
 	for(int i = 0; i < INVENTORY_SIZE; i++)
 		delete inventory[i];
 }
