@@ -1,7 +1,6 @@
 #include "Ice.hpp"
 #include "ICharacter.hpp"
 #include <iostream>
-#include <string>
 
 Ice::Ice(void): AMateria("ice")
 {

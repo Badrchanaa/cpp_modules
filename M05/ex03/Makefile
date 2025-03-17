@@ -1,5 +1,5 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 NAME = bureaucrat
 SRCS = main.cpp Bureaucrat.cpp
 HEADERS = Bureaucrat.hpp
@@ -16,3 +16,4 @@ fclean:
 	rm -f $(NAME)
 
 re: fclean all
+

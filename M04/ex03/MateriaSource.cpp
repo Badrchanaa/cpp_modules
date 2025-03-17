@@ -2,7 +2,6 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include <iostream>
-#include <string>
 
 MateriaSource::MateriaSource(void)
 {

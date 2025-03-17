@@ -1,8 +1,8 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 NAME = bureaucrat
-SRCS = main.cpp Bureaucrat.cpp
-HEADERS = Bureaucrat.hpp
+SRCS = main.cpp Bureaucrat.cpp exceptions.cpp Form.cpp
+HEADERS = Bureaucrat.hpp Form.hpp
 
 all: $(NAME)
 

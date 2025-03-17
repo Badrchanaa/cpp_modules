@@ -2,7 +2,6 @@
 #include "Cure.hpp"
 #include "Ice.hpp"
 #include <iostream>
-#include <string>
 
 Character::Character(void) {
 	// std::cout << "Character constructor called" << std::endl;

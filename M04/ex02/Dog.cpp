@@ -1,6 +1,5 @@
 #include "Dog.hpp"
 #include <iostream>
-#include <string>
 
 Dog::Dog(void): AAnimal("Dog") {
 	std::cout << "A new Dog appeared" << std::endl;

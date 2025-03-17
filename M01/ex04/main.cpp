@@ -1,6 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <sys/stat.h>
+
+int	is_dir(const char *path)
+{
+	struct stat st;
+	return (stat(path, &st) == 0 && S_ISDIR(st.st_mode));
+}
+
 
 /*
 	replaces each occurence of oldStr in ifile (input file) by 
@@ -47,23 +55,23 @@ int	main(int ac, char *av[])
 	std::string newStr(av[3]);
 
 	ifile.open(av[1]);
-	if(!ifile.is_open())
-	{
-		std::cout << "Cannot open input file (dir)" << std::endl;
-		return 1;
-	}
 	if (!ifile)
 	{
-		std::cout << "Cannot open input file" << std::endl;
+		std::cout << "Error: Cannot open input file" << std::endl;
 		return 1;
 	}
-
+	else if(is_dir(av[1]))
+	{
+		ifile.close();
+		std::cout << "Error: Input filename points to a directory" << std::endl;
+		return 1;
+	}
 	std::string newName = av[1];
 	newName += ".replace";
 	ofile.open(newName.c_str());
 	if (!ofile)
 	{
-		std::cout << "Cannot open output file" << std::endl;
+		std::cout << "Error: Cannot open output file" << std::endl;
 		return 1;
 	}
 	sed(ifile, ofile, oldStr, newStr);

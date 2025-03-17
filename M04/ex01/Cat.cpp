@@ -1,6 +1,5 @@
 #include "Cat.hpp"
 #include <iostream>
-#include <string>
 
 Cat::Cat(void): Animal("Cat") {
 	std::cout << "A new cat appeared" << std::endl;

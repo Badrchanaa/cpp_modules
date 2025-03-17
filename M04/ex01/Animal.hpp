@@ -4,7 +4,6 @@
 #include "Brain.hpp"
 #include <string>
 
-
 class Animal
 {
 	public:

@@ -1,6 +1,5 @@
 #include "Brain.hpp"
 #include <iostream>
-#include <string>
 
 Brain::Brain(void) {
 	std::cout << "Someone gained a Brain" << std::endl;

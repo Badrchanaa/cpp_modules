@@ -1,6 +1,5 @@
 #include "AMateria.hpp"
 #include <iostream>
-#include <string>
 
 AMateria::AMateria(void) {
 	// std::cout << "AMateria constructor called" << std::endl;

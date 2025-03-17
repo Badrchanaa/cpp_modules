@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <string>
 #include <iostream>
 
@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other): _name(other._name), _grade(othe
 {
 }
 
-void			Bureaucrat::signForm(Form &form) const
+void			Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
