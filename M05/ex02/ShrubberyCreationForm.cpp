@@ -31,7 +31,13 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 void		ShrubberyCreationForm::_executeAction(Bureaucrat const & executor) const
 {
 
-	std::ofstream of;
-	of.open("test.txt");
-	if ()
+	std::ofstream	of;
+	std::string	filename;
+
+	of.open(filename);
+	if (!of)
+	{
+		std::cout << "couldnt open filename" << std::endl;
+		throw std::exception() // TODO: throw custom exception;
+	}
 }
