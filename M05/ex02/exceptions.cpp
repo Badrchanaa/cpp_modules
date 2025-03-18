@@ -16,11 +16,15 @@ const char *AForm::NotSignedException::what() const throw()
 	return ("Form is not signed.");
 }
 
-// RobotomyRequestForm::RobotomyFailure::RobotomyFailure(std::string target): _target(target)
-// {
-// }
+RobotomyRequestForm::RobotomyFailure::RobotomyFailure(std::string target): _msg(target + " robotomy has failed.")
+{
+}
+
+RobotomyRequestForm::RobotomyFailure::~RobotomyFailure() throw()
+{
+}
 
 const char	*RobotomyRequestForm::RobotomyFailure::what() const throw()
 {
-	return (" robotomy has failed.");
+	return _msg.c_str();
 }

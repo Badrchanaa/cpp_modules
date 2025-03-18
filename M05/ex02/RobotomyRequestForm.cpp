@@ -36,6 +36,6 @@ void		RobotomyRequestForm::_executeAction() const
 	srand(time(NULL));
 	int randomNumber = rand() % 100;
 	if (randomNumber < 50)
-		throw RobotomyRequestForm::RobotomyFailure();	
+		throw RobotomyRequestForm::RobotomyFailure(_target);	
 	std::cout << _target << " has been robotomized successfully." << std::endl;
 }

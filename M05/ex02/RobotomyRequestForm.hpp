@@ -17,10 +17,11 @@ class RobotomyRequestForm: public AForm
 		class RobotomyFailure: public std::exception
 		{
 			private:
-				std::string _target;
+				std::string _msg;
 			public:
-				RobotomyFailure(std::string target) throw();
+				RobotomyFailure(std::string target);
 				const char *what() const throw();
+				~RobotomyFailure() throw();
 
 		};
 	private:
