@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
@@ -13,4 +14,13 @@ const char *AForm::GradeTooLowException::what() const throw()
 const char *AForm::NotSignedException::what() const throw()
 {
 	return ("Form is not signed.");
+}
+
+// RobotomyRequestForm::RobotomyFailure::RobotomyFailure(std::string target): _target(target)
+// {
+// }
+
+const char	*RobotomyRequestForm::RobotomyFailure::what() const throw()
+{
+	return (" robotomy has failed.");
 }

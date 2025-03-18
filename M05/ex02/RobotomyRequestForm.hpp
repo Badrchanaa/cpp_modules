@@ -3,8 +3,8 @@
 
 #include <string>
 #include "AForm.hpp"
-# define SIGN_GRADE 72
-# define EXECUTION_GRADE 45
+# define RRF_SIGN_GRADE 72
+# define RRF_EXECUTION_GRADE 45
 
 class RobotomyRequestForm: public AForm
 {
@@ -14,8 +14,17 @@ class RobotomyRequestForm: public AForm
 		RobotomyRequestForm(const RobotomyRequestForm &other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm &other);
 		~RobotomyRequestForm();
+		class RobotomyFailure: public std::exception
+		{
+			private:
+				std::string _target;
+			public:
+				RobotomyFailure(std::string target) throw();
+				const char *what() const throw();
+
+		};
 	private:
-		virtual void		_executeAction(Bureaucrat const & executor) const;
+		virtual void		_executeAction() const;
 		std::string			_target;
 		
 };

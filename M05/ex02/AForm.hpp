@@ -33,7 +33,7 @@ class AForm
 			const char *what() const throw();
 		};
 	private:
-		virtual void		_executeAction(Bureaucrat const & executor) const = 0;
+		virtual void		_executeAction() const = 0;
 		unsigned int		_validateGrade(int grade) const;
 		const std::string	_name;
 		bool				_isSigned;

@@ -4,8 +4,8 @@
 #include <string>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-# define SIGN_GRADE 145
-# define EXECUTION_GRADE 137
+# define SCF_SIGN_GRADE 145
+# define SCF_EXECUTION_GRADE 137
 
 class ShrubberyCreationForm: public AForm
 {
@@ -15,9 +15,8 @@ class ShrubberyCreationForm: public AForm
 		ShrubberyCreationForm(const ShrubberyCreationForm &other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm &other);
 		~ShrubberyCreationForm();
-		class 
 	private:
-		virtual void		_executeAction(Bureaucrat const & executor) const;
+		virtual void		_executeAction() const;
 		std::string			_target;
 };
 

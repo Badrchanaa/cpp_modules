@@ -30,7 +30,7 @@ void		AForm::execute(Bureaucrat const & executor) const
 		throw AForm::NotSignedException();
 	if (executor.getGrade() > _execGrade)
 		throw AForm::GradeTooLowException();
-	this->_executeAction(executor);
+	this->_executeAction();
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &form)
