@@ -9,17 +9,22 @@
 int main()
 {
 	Bureaucrat br(1, "Someone");
-	RobotomyRequestForm rrf("RAZ");
-	PresedentialPardonForm ppf("xman");
-	ShrubberyCreationForm scf("home");
+	Intern intern;
 
-	std::cout << "----- SIGNING -----" << std::endl;
-	br.signForm(rrf);
-	br.signForm(ppf);
-	br.signForm(scf);
-	std::cout << "----- EXECUTION -----" << std::endl;
-	br.executeForm(rrf);
-	br.executeForm(ppf);
-	br.executeForm(scf);
+	AForm * form = intern.makeForm("Robotomy Request", "test");
+	if (!form)
+		return (0);
+
+	try
+	{
+		form->beSigned(br);
+		form->execute(br);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	
+	delete form;
 	return 0;
 }

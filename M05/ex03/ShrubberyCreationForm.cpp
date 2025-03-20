@@ -23,7 +23,6 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-	
 }
 
 void		ShrubberyCreationForm::_executeAction() const
