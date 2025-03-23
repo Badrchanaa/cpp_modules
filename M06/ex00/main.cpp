@@ -7,6 +7,7 @@ int main(int ac, char *av[])
 	if (ac == 1)
 		return (0);
 
-	ScalarConverter::convert(av[1]);
+	ScalarConverter::convert(static_cast<std::string>(av[1]));
 	return 0;
+
 }

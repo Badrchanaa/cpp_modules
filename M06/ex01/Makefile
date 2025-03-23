@@ -1,8 +1,8 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
-NAME = convert
-SRCS = main.cpp ScalarConverter.cpp
-HEADERS = ScalarConverter.hpp
+NAME = serialize
+SRCS = main.cpp Data.cpp
+HEADERS = Data.hpp
 
 all: $(NAME)
 

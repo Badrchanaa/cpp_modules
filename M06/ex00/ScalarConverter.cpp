@@ -3,6 +3,8 @@
 #include <string>
 #include <cstdlib>
 #include <cmath>
+#include <iomanip>
+#include <limits.h>
 
 ScalarConverter::ScalarConverter()
 {
@@ -31,25 +33,52 @@ bool	ScalarConverter::_validate(std::string literal)
 	return (literal.find_first_not_of("0123456789.") == std::string::npos);
 }
 
-void	ScalarConverter::convert(std::string literal)
+void	ScalarConverter::_printInt(double num)
 {
-	if (!ScalarConverter::_validate(literal))
-	{
-		std::cout << "please enter a valid literal" << std::endl;
-		return;
-	}
-	double d = std::strtod(literal.c_str(), NULL);
-	if (literal.length() == 1 && !ScalarConverter::_isdigit(literal[0]))
-	{
-		// is a character literal
-		return;
-	}
-	std::cout << "char: " << static_cast<char>(d) << std::endl;
 	std::cout << "int: ";
-	if (std::isnan(d) || std::isinf(d))
+	if (std::isnan(num) || std::isinf(num) || num > INT_MAX || num < INT_MIN)
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << static_cast<int>(d) << std::endl;
-	std::cout << "float: " << std::strtof(literal.c_str(), NULL) << std::endl;
+		std::cout << static_cast<int>(num) << std::endl;
+}
+
+void	ScalarConverter::_printFloat(double num)
+{
+	std::cout << "float: "  << static_cast<float>(num);
+	std::cout << "f" << std::endl;
+}
+
+void	ScalarConverter::_printChar(double num)
+{
+	std::cout << "char: "; 
+	if (std::isnan(num) || std::isinf(num) || num > INT_MAX || num < INT_MIN)
+		std::cout << "impossible" << std::endl;
+	else if (isprint(static_cast<int>(num)))
+		std::cout << "'" << static_cast<char>(num) << "'" << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+}
+
+void	ScalarConverter::convert(std::string literal)
+{
+	int		i;
+	double	d;
+
+	if (literal.length() == 1 && !ScalarConverter::_isdigit(literal[0]))
+		d = static_cast<double>(literal[0]);
+	else
+		d = std::strtod(literal.c_str(), NULL);
+	if (!std::isnan(d) && !std::isinf(d) && !ScalarConverter::_validate(literal))
+	{
+		std::cout << "please enter a valid number or character" << std::endl;
+		return ;
+	}
+
+	i = static_cast<int>(d);
+	if (d == static_cast<double>(i))
+		std::cout << std::fixed << std::setprecision(1);
+	ScalarConverter::_printChar(d);
+	ScalarConverter::_printInt(d);
+	ScalarConverter::_printFloat(d);
 	std::cout << "double: "  << d << std::endl;
 }
