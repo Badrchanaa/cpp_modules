@@ -8,10 +8,10 @@
 
 int main()
 {
-	Bureaucrat br(1, "Someone");
+	Bureaucrat br(1, "xman");
 	Intern intern;
 
-	AForm * form = intern.makeForm("Robotomy Request", "test");
+	AForm * form = intern.makeForm("Robotomy Request", "candidate");
 	if (!form)
 		return (0);
 
@@ -22,9 +22,8 @@ int main()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
-	
 	delete form;
 	return 0;
 }

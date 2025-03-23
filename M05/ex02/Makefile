@@ -1,6 +1,6 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
-NAME = bureaucrat
+NAME = forms
 SRCS = main.cpp Bureaucrat.cpp exceptions.cpp AForm.cpp PresedentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 HEADERS = Bureaucrat.hpp AForm.hpp PresedentialPardonForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp
 
