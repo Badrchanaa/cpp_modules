@@ -7,28 +7,10 @@ template <typename T>
 class Array
 {
 	public:
-		Array(void): _content(NULL), _size(0)
-		{
-		}
-
-		Array(unsigned int n):
-		{
-			if (n != 0)
-				this->_content = new T[n];
-			else
-				this->_content = NULL;
-			this->_size = n;
-		}
-
-		Array(const Array<T> &other)
-		{
-			if (other._size != 0)
-				this->_content = new T[other->_size];
-			else
-				this->_content = NULL;
-		}
-
-		Array<T>& operator=(const Array<T> &other);
+		Array(void);
+		Array(unsigned int n);
+		Array(const Array<T> &other);
+		Array<T>& operator=(Array<T> other);
 		~Array();
 		T&	operator[](const unsigned int index);
 		unsigned int	size(void) const;
@@ -37,5 +19,7 @@ class Array
 		unsigned int	_size;
 		
 };
+
+#include "Array.tpp"
 
 #endif
