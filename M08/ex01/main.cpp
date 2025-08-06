@@ -9,10 +9,12 @@ void testFull()
 	{
 		sp->addNumber(2);
 	}
-	catch (std::exception)
+	catch (const std::exception& e)
 	{
 		std::cout << "CATCH: Could not add number, Span full" << std::endl;
 	}
+	std::cout << "shortest span: " << sp->shortestSpan() << std::endl;
+	std::cout << "longest span: " << sp->longestSpan() << std::endl;
 	delete sp;
 }
 
@@ -23,6 +25,8 @@ void testAddAll()
 	std::vector<int> v(10);
 	std::fill(v.begin(), v.end(), 222);
 	sp.addAll(v.begin(), v.end());
+	std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
+	std::cout << "longest span: " << sp.longestSpan() << std::endl;
 }
 
 void testAddAllFail()
@@ -35,10 +39,23 @@ void testAddAllFail()
 		std::fill(v.begin(), v.end(), 222);
 		sp.addAll(v.begin(), v.end());
 	}
-	catch (std::exception)
+	catch (const std::exception& e)
 	{
 		std::cout << "CATCH: vector has too many elements" << std::endl;
 	}
+}
+
+void testSpan()
+{
+	Span sp(10);
+
+	sp.addNumber(1);
+	sp.addNumber(2);
+	std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
+	std::cout << "longest span: " << sp.longestSpan() << std::endl;
+	sp.addNumber(101);
+	std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
+	std::cout << "longest span: " << sp.longestSpan() << std::endl;
 }
 
 int main()
@@ -49,5 +66,7 @@ int main()
 	testAddAll();
 	std::cout << " ########## TEST ADD ALL - VECTOR(11) -> SPAN(10) ###########" << std::endl;
 	testAddAllFail();
+	std::cout << " ########## TEST SPAN ###########" << std::endl;
+	testSpan();
 	return 0;
 }

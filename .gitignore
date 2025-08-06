@@ -1,6 +1,11 @@
 # Prerequisites
 *.d
 
+# Clang LSP
+.cache
+.clang-format
+compile_commands.json
+
 # Object files
 *.o
 *.ko
