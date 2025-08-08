@@ -13,6 +13,19 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyReq
 {
 }
 
+RobotomyRequestForm::RobotomyFailure::RobotomyFailure(std::string target): _msg(target + " robotomy has failed.")
+{
+}
+
+RobotomyRequestForm::RobotomyFailure::~RobotomyFailure() throw()
+{
+}
+
+const char	*RobotomyRequestForm::RobotomyFailure::what() const throw()
+{
+	return _msg.c_str();
+}
+
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other): AForm("RobotomyRequestForm", RRF_SIGN_GRADE, RRF_EXECUTION_GRADE), _target(other._target)
 {
 }

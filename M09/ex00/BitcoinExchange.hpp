@@ -1,0 +1,41 @@
+#ifndef __BITCOIN_EXCHANGE__
+#define __BITCOIN_EXCHANGE__
+
+#include <map>
+#include <sstream>
+
+class Date
+{
+    public:
+	Date() : year(0), month(0), day(0) {}
+	Date(const Date &date)
+	    : year(date.year), month(date.month), day(date.day)
+	{
+	}
+	Date &operator=(const Date &date)
+	{
+	    this->year = date.year;
+	    this->month = date.month;
+	    this->day = date.day;
+	    return *this;
+	}
+	bool operator<(const Date &date) const;
+	bool operator>(const Date &date) const;
+	bool operator==(const Date &date) const;
+	bool isValid() const
+	{
+	    return (year > 1960 && year < 3000 && month > 0 && month < 13 &&
+	            day > 0 && day < 32);
+	}
+	int year;
+	int month;
+	int day;
+};
+
+typedef std::map<Date, double> PriceMap;
+
+std::pair<Date, double> parse_db_line(std::string line);
+void parse_db(std::string db_filename, PriceMap &map);
+std::istringstream &operator>>(std::istringstream &iss, Date &date);
+
+#endif

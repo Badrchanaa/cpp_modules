@@ -17,6 +17,16 @@ Form::Form(const Form &other): _name(other._name), _signGrade(other._signGrade),
 	*this = other;
 }
 
+const char *Form::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high.");
+}
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low.");
+}
+
 Form& Form::operator=(const Form &other)
 {
 	this->_isSigned = other._isSigned;
