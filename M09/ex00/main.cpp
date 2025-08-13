@@ -50,7 +50,6 @@ double calculatePrice(const PriceMap &dataMap, const Date &date, double value)
   PriceMap::const_iterator it = dataMap.lower_bound(date);
   if (it != dataMap.begin() && it->first != date)
     it--;
-  std::cout << "Using date:" << it->first << std::endl;
   return value * it->second;
 }
 

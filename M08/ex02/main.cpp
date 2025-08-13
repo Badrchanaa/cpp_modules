@@ -47,6 +47,7 @@ void testList() {
   }
   std::list<int> s(mstack);
 }
+
 int main() { 
 
 	std::cout << "######### TEST MUTANT STACK #########" << std::endl;
