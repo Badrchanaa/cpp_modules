@@ -76,12 +76,20 @@ void	identify(Base &p)
 
 int	main()
 {
+	A a;
+	B b;
+	C c;
+
+	identify(a);
+	identify(b);
+	identify(c);
+
 	Base	*ptr = generate();
 	Base	&ref = *ptr;
 
 	identify(ptr);
 	identify(ref);
-
 	delete ptr;
+
 	return 0;
 }

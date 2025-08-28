@@ -21,12 +21,12 @@ std::string Intern::_formatFormName(std::string name)
 
     for (std::string::size_type i = 0; i < name.length(); i++)
     {
-	if (name[i] == ' ')
-	    continue;
-	if (name[i] >= 'A' && name[i] <= 'Z')
-	    formattedName += name[i] - ('A' - 'a');
-	else
-	    formattedName += name[i];
+        if (name[i] == ' ')
+            continue;
+        if (name[i] >= 'A' && name[i] <= 'Z')
+            formattedName += name[i] - ('A' - 'a');
+        else
+            formattedName += name[i];
     }
     return formattedName;
 }
@@ -39,8 +39,8 @@ form_type Intern::_getFormType(std::string name)
     formattedName = Intern::_formatFormName(name);
     for (int i = FORM_SCF; i < FORM_MAX; i++)
     {
-	if (formattedName.compare(formNames[i]) == 0)
-	    return ((form_type)i);
+        if (formattedName.compare(formNames[i]) == 0)
+            return ((form_type)i);
     }
     throw Intern::InvalidFormName();
 }
@@ -70,22 +70,22 @@ AForm *Intern::makeForm(std::string name, std::string target)
                                                         &Intern::_makeRRF};
     try
     {
-	form_type formType = Intern::_getFormType(name);
-	AForm *(Intern::*memberFn)(std::string) = formFns[formType];
-	AForm *form = (this->*memberFn)(target);
-	return form;
+        form_type formType = Intern::_getFormType(name);
+        AForm *(Intern::*memberFn)(std::string) = formFns[formType];
+        AForm *form = (this->*memberFn)(target);
+        return form;
     }
     catch (const std::bad_alloc &e)
     {
-	std::cout << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
     catch (const Intern::InvalidFormName &e)
     {
-	std::cout << "Invalid form name argument." << std::endl;
+        std::cout << "Invalid form name argument." << std::endl;
     }
     catch (const std::exception &e)
     {
-	std::cout << "Something went wrong." << std::endl;
+        std::cout << "Something went wrong." << std::endl;
     }
     return NULL;
 }

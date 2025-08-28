@@ -12,9 +12,9 @@ class ScalarConverter
 		static	bool	_isalpha(char c);
 		static	bool	_validate(std::string literal);
 		static	bool	_isdigit(char c);
-		static	void		_printInt(double num);
-		static	void		_printChar(double num);
-		static	void		_printFloat(double num);
+		static	void	_printInt(double num);
+		static	void	_printChar(double num);
+		static	void	_printFloat(double num);
 };
 
 #endif

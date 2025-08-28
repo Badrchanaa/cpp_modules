@@ -1,8 +1,7 @@
-#ifndef __MUTANTSTACK_H__
-#define __MUTANTSTACK_H__
+#ifndef __MUTANTSTACK_HPP__
+# define __MUTANTSTACK_HPP__
 
 #include <stack>
-#include <iostream>
 
 template <typename T>
 class MutantStack : public std::stack<T>
@@ -10,14 +9,14 @@ class MutantStack : public std::stack<T>
   public:
     typedef typename std::stack<T>::container_type::iterator iterator;
 
-    MutantStack<T>() : std::stack<T>() {}
+    MutantStack() : std::stack<T> () {}
     MutantStack &operator=(const MutantStack &other)
     {
       this->std::stack<T>::operator=(other);
       return *this;
     }
-    MutantStack<T>(const MutantStack<T> &mstack) : std::stack<T>(mstack) {}
-    ~MutantStack<T>() {}
+    MutantStack(const MutantStack &mstack) : std::stack<T>(mstack) {}
+    ~MutantStack() {}
 
     iterator begin() { return this->c.begin(); }
     iterator end() { return this->c.end(); }

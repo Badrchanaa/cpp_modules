@@ -51,7 +51,7 @@ void	ScalarConverter::_printFloat(double num)
 void	ScalarConverter::_printChar(double num)
 {
 	std::cout << "char: "; 
-	if (std::isnan(num) || std::isinf(num) || num > INT_MAX || num < INT_MIN)
+	if (std::isnan(num) || std::isinf(num) || num > 255 || num < 0)
 		std::cout << "impossible" << std::endl;
 	else if (isprint(static_cast<int>(num)))
 		std::cout << "'" << static_cast<char>(num) << "'" << std::endl;
@@ -67,7 +67,18 @@ void	ScalarConverter::convert(std::string literal)
 	if (literal.length() == 1 && !ScalarConverter::_isdigit(literal[0]))
 		d = static_cast<double>(literal[0]);
 	else
-		d = std::strtod(literal.c_str(), NULL);
+	{
+		char *end;
+		const char *str = literal.c_str();
+		d = std::strtod(str, &end);
+		if (*end == 'f' || *end == 'F')
+			end++;
+		if (*end)
+		{
+			std::cout << "please enter a valid number or character" << std::endl;
+			return;
+		}
+	}
 	if (!std::isnan(d) && !std::isinf(d) && !ScalarConverter::_validate(literal))
 	{
 		std::cout << "please enter a valid number or character" << std::endl;

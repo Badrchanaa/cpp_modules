@@ -1,10 +1,22 @@
-#include "tests.hpp"
 #include <iostream>
 #include <vector>
+#include "Span.hpp"
+#include <cstdlib>
+
+Span	*createFullSpan(unsigned int capacity)
+{
+	srand(time(0));
+	Span*	sp = new Span(capacity);
+	for (unsigned int i = 0; i < capacity; i++)
+	{
+		sp->addNumber(rand());
+	}
+	return sp;
+}
 
 void testFull()
 {
-	Span *sp = createFullSpan(10000);
+	Span *sp = createFullSpan(15000);
 	try
 	{
 		sp->addNumber(2);

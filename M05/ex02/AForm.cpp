@@ -38,7 +38,6 @@ AForm& AForm::operator=(const AForm &other)
 	return *this;
 }
 		
-		
 void		AForm::execute(Bureaucrat const & executor) const
 {
 	if (!_isSigned)
@@ -50,7 +49,12 @@ void		AForm::execute(Bureaucrat const & executor) const
 
 std::ostream &operator<<(std::ostream &os, const AForm &form)
 {
-	os << "AForm name: " << form.getName() << " signGrade: " << form.getSignGrade() << " executeGrade: " << form.getExecutionGrade();
+	os << "Form name: " << form.getName() << " ";
+	if (form.isSigned())
+		os << "(signed)";
+	else
+		os << "(not signed)";
+	os << " signGrade: " << form.getSignGrade() << " executeGrade: " << form.getExecutionGrade();
 	return os;
 }
 

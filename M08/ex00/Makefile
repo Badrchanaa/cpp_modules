@@ -1,9 +1,9 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
-NAME = iter
+NAME = easyfind
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = iter.hpp
+HEADERS = easyfind.hpp
 
 all: $(NAME)
 

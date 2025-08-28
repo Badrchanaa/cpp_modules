@@ -1,8 +1,8 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
-NAME = bureaucrat
-SRCS = main.cpp Bureaucrat.cpp
-HEADERS = Bureaucrat.hpp
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
+NAME = PMergeMe
+SRCS = main.cpp PMergeMe.cpp
+HEADERS = PMergeMe.hpp
 
 all: $(NAME)
 

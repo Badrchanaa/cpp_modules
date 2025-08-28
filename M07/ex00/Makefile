@@ -1,18 +1,24 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
-NAME = minimax
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
+NAME = whatever
 SRCS = main.cpp
+OBJS = $(SRCS:.cpp=.o)
 HEADERS = whatever.hpp
 
 all: $(NAME)
 
-$(NAME): $(SRCS) $(HEADERS)
+$(NAME): $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) $(SRCS) -o $@
 
-clean:
-	rm -f $(NAME)
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $^ -o $@
 
-fclean:
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: fclean clean re

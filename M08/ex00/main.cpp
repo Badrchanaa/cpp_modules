@@ -1,15 +1,7 @@
 #include <algorithm>
 #include <vector>
 #include <iostream>
-
-template <typename T>
-int easyfind(T& container, int needle)
-{
-	typename T::iterator it = std::find(container.begin(), container.end(), needle);
-	if (it == container.end())
-		throw std::exception();
-	return *it;
-}
+#include "easyfind.hpp"
 
 int main()
 {
@@ -26,7 +18,7 @@ int main()
 		try
 		{
 			int b = easyfind(a, 5);
-			std::cout << "found it" << std::endl;
+			std::cout << "found it: " << b << std::endl;
 		}
 		catch (std::exception)
 		{
@@ -46,7 +38,7 @@ int main()
 		try
 		{
 			int b = easyfind(a, 6);
-			std::cout << "found it" << std::endl;
+			std::cout << "found it: " << b << std::endl;
 		}
 		catch (std::exception)
 		{

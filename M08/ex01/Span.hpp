@@ -1,6 +1,7 @@
 #ifndef __SPAN_HPP__
-#define __SPAN_HPP__
+# define __SPAN_HPP__
 
+#include <stack>
 #include <iostream>
 
 class Span {
@@ -15,13 +16,10 @@ class Span {
     int shortestSpan();
 
     template <typename ForwardIt> void addAll(ForwardIt first, ForwardIt last) {
-        unsigned int i = 0;
         while (first != last) {
             addNumber(*first);
-            i++;
             first++;
         }
-        std::cout << "Added " << i << " elements" << std::endl;
     }
 
   private:

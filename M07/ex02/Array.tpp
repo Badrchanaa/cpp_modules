@@ -1,29 +1,20 @@
-#include <iostream>
-#include <string>
+#pragma once
 
 template <typename T> Array<T>::Array(void)
 {
-	std::cout << "default cons" << std::endl;
-	this->_content = NULL;
+	this->_content = new T[0];
 	this->_size = 0;
 }
 
 template <typename T> Array<T>::Array(unsigned int n)
 {
-	if (n != 0)
-		this->_content = new T[n];
-	else
-		this->_content = NULL;
+	this->_content = new T[n];
 	this->_size = n;
 }
 
 template <typename T> Array<T>::Array(const Array<T> &other)
 {
-	std::cout << "copy constructor" << std::endl;
-	if (other._size != 0)
-		this->_content = new T[other._size];
-	else
-		this->_content = NULL;
+	this->_content = new T[other._size];
 	for(unsigned int i = 0; i < other._size; i++)
 		this->_content[i] = other._content[i];
 	this->_size = other._size;
@@ -47,6 +38,13 @@ template <typename T> Array<T>::~Array(void)
 }
 
 template <typename T> T& Array<T>::operator[](const unsigned int index)
+{
+	if (index >= this->_size)
+		throw std::exception();
+	return this->_content[index];
+}
+
+template <typename T> const T& Array<T>::operator[](const unsigned int index) const
 {
 	if (index >= this->_size)
 		throw std::exception();

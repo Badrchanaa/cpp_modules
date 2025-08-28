@@ -54,5 +54,17 @@ int main() {
 	testMutantStack();
 	std::cout << "######### TEST STD LIST #########" << std::endl;
 	testList();
+  std::cout << " ######## TEST MUTANT STACK 2 ######## " << std::endl;
+  {
+    MutantStack<double> mstack;
+    mstack.push(10);
+    mstack.push(20);
+    mstack.push(40);
+    std::cout << "MutantStack begin: " << *mstack.begin() << std::endl;
+    MutantStack<double>::iterator it = mstack.end();
+    it--;
+    std::cout << "MutantStack last: " << *it << std::endl;
+    std::cout << "MutantStack top: " << mstack.top() << std::endl;
+  }
 	return 0; }
 

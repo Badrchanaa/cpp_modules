@@ -1,5 +1,5 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 NAME = form
 SRCS = main.cpp Bureaucrat.cpp Form.cpp
 HEADERS = Bureaucrat.hpp Form.hpp

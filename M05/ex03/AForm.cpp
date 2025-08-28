@@ -39,9 +39,14 @@ void AForm::execute(Bureaucrat const &executor) const
 
 std::ostream &operator<<(std::ostream &os, const AForm &form)
 {
-    os << "AForm name: " << form.getName() << " signGrade: " << form.getSignGrade()
-       << " executeGrade: " << form.getExecutionGrade();
-    return os;
+	os << "Form name: " << form.getName() << " ";
+	if (form.isSigned())
+		os << "(signed)";
+	else
+		os << "(not signed)";
+	os << " signGrade: " << form.getSignGrade() << " executeGrade: " << form.getExecutionGrade();
+	return os;
+
 }
 
 bool AForm::beSigned(Bureaucrat const &br)

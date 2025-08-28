@@ -13,6 +13,7 @@ class Array
 		Array<T>& operator=(Array<T> other);
 		~Array();
 		T&	operator[](const unsigned int index);
+		const T& operator[](const unsigned int index) const;
 		unsigned int	size(void) const;
 	private:
 		T				*_content;

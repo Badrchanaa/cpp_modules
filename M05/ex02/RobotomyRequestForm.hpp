@@ -22,7 +22,6 @@ class RobotomyRequestForm: public AForm
 				RobotomyFailure(std::string target);
 				const char *what() const throw();
 				~RobotomyFailure() throw();
-
 		};
 	private:
 		virtual void		_executeAction() const;

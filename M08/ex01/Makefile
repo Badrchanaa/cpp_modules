@@ -1,19 +1,24 @@
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
-NAME = Span
-SRCS = main.cpp tests.cpp Span.cpp
-HEADERS = tests.hpp Span.hpp
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
+NAME = span
+SRCS = main.cpp Span.cpp
+OBJS = $(SRCS:.cpp=.o)
+HEADERS = Span.hpp
 
 all: $(NAME)
 
-$(NAME): $(SRCS) $(HEADERS)
+$(NAME): $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) $(SRCS) -o $@
 
-clean:
-	rm -f $(NAME)
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $^ -o $@
 
-fclean:
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
+.PHONY: fclean clean re
