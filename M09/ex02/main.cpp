@@ -26,6 +26,15 @@ array_t parseArgs(std::string args)
    return arr;
 }
 
+void isSorted(array_t& array)
+{
+    for (size_t i = 0; i < array.size() - 1; i++)
+    {
+        if (array[i] > array[i + 1])
+            throw std::runtime_error("array not sorted");
+    }
+}
+
 void test(array_t vectorArray)
 {
     size_t pairSize = 1;
@@ -53,8 +62,11 @@ int main(int ac, char **av)
         return 1;
     
     array_t arr = parseArgs(av[1]);
-    test(arr);
-
+    printVector(arr);
+    mergeInsertSortVector(arr);
+    printVector(arr);
+    isSorted(arr);
+    return 0;
     // mergeInsertSortVector(arr);
 
 }

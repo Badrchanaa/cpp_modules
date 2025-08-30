@@ -17,7 +17,7 @@ static long    calc_expression(long a, long b, char op)
         case '/':
             return a / b;
         default:
-            throw std::exception();
+            throw std::runtime_error("Invalid operator");
     }
 }
 
@@ -38,10 +38,13 @@ long RPN(std::string expression)
             q.pop();
             long b = q.top();
             q.pop();
-            q.push(calc_expression(b, a, current));
+            if ((current == '/') && a == 0)
+                throw std::runtime_error("Division by zero");
+            long result = calc_expression(b, a, current);
+            q.push(result);
         }
     }
     if (q.size() != 1)
-        throw std::exception();
+        throw std::runtime_error("Invalid expression");
     return q.top();
 }

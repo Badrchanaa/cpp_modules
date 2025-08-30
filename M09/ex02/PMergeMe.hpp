@@ -4,34 +4,24 @@
 #include <vector>
 #include <cstddef>
 
-template <typename T>
-struct elementPair: public std::pair<T, T>
+class Compare
 {
-    bool operator<(const elementPair& p) const
-    {
-        return this->first < p.first;
-    }
-    bool operator>(const elementPair& p) const
-    {
-        return this->first > p.first;
-    }
-    bool operator==(const elementPair& p) const
-    {
-        return this->first == p.first;
-    }
-    bool operator!=(const elementPair& p) const
-    {
-        return !(*this == p);
-    }
+    public:
+        static size_t comparisons;
 };
+size_t Compare::comparisons = 0;
 
 typedef std::vector<unsigned int> array_t;
-typedef std::vector<elementPair<unsigned int> > pairArray_t;
+typedef std::vector<array_t::iterator> iter_array_t;
 
 void    _swapPair(array_t& array, size_t start, size_t pair_size);
-void    printVector(array_t arr);
+void    printVector(array_t arr, size_t level = 1);
 bool    _comparePair(array_t& array, size_t start, size_t pair_size);
 
-void    mergeInsertSortVector(array_t& array);
+void   mergeInsertSortVector(array_t& array, size_t level = 1);
+void _sortPairs(array_t& array, size_t level);
+void _sortPairsFixed(array_t& array, size_t level);
+void    mergeToCopy(array_t& copy, array_t array, iter_array_t main, size_t level);
+void    mergeToCopy(array_t& copy, iter_array_t main, size_t level);
 
 #endif

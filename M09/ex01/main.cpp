@@ -12,7 +12,7 @@ int main(int ac, char **av)
     }
     catch(const std::exception& e)
     {
-        std::cerr << "Error" << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
     return 0;
 }
