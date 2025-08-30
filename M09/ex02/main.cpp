@@ -66,6 +66,7 @@ int main(int ac, char **av)
     mergeInsertSortVector(arr);
     printVector(arr);
     isSorted(arr);
+    std::cout << "sorted in " << Compare::comparisons << " comparisons" << std::endl;
     return 0;
     // mergeInsertSortVector(arr);
 

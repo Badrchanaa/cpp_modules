@@ -1,241 +1,66 @@
 LEVEL: 1
-	44465 43668 58907 15018 45638 52752 20360 98340 80005 7353 61760 56582 34447 25199 61391 43704 764 27263 93934 87077 66961 51003 29718 87611 12203 
- #### size: 25 pairs count: 12 #### 
+	481 231 422 217 381 
+ #### size: 5 pairs count: 2 #### 
 	Level 1 has odd number 
-compare 44465 and 43668
-	swap 0 <=> 1
-compare 58907 and 15018
-	swap 2 <=> 3
-compare 45638 and 52752
-compare 20360 and 98340
-compare 80005 and 7353
-	swap 8 <=> 9
-compare 61760 and 56582
-	swap 10 <=> 11
-compare 34447 and 25199
-	swap 12 <=> 13
-compare 61391 and 43704
-	swap 14 <=> 15
-compare 764 and 27263
-compare 93934 and 87077
-	swap 18 <=> 19
-compare 66961 and 51003
-	swap 20 <=> 21
-compare 29718 and 87611
- #### size: 25 pairs count: 6 #### 
-compare 44465 and 58907
-compare 52752 and 98340
-compare 80005 and 61760
-	swap 8 <=> 10
-	swap 9 <=> 11
-compare 34447 and 61391
-compare 27263 and 93934
-compare 66961 and 87611
- #### size: 25 pairs count: 3 #### 
-compare 58907 and 98340
-compare 80005 and 61391
-	swap 8 <=> 12
-	swap 9 <=> 13
-	swap 10 <=> 14
-	swap 11 <=> 15
-compare 93934 and 87611
-	swap 16 <=> 20
-	swap 17 <=> 21
-	swap 18 <=> 22
-	swap 19 <=> 23
- #### size: 25 pairs count: 1 #### 
-	Level 8 has odd number 
-compare 98340 and 80005
-	swap 0 <=> 8
-	swap 1 <=> 9
-	swap 2 <=> 10
-	swap 3 <=> 11
-	swap 4 <=> 12
-	swap 5 <=> 13
-	swap 6 <=> 14
-	swap 7 <=> 15
- #### size: 25 pairs count: 0 #### 
- ## after sort main ## 
-LEVEL: 8
-	25199 34447 43704 61391 56582 61760 7353 80005 43668 44465 15018 58907 45638 52752 20360 98340 51003 66961 29718 87611 764 27263 87077 93934 12203 
-[Level: 8] main: 98340 pend 80005
- ## with iterators ## 
-[Level: 8] main: 98340 pend 80005
-odd is 93934
- ## main ## 
-98340 
- ## merged main ## 
-80005 93934 98340 insert main: 80005
-	25199 34447 43704 61391 56582 61760 7353 80005 
-insert main: 93934
-	51003 66961 29718 87611 764 27263 87077 93934 
-insert main: 98340
-	43668 44465 15018 58907 45638 52752 20360 98340 
- ## Copy ## 
-LEVEL: 1
-	25199 34447 43704 61391 56582 61760 7353 80005 51003 66961 29718 87611 764 27263 87077 93934 43668 44465 15018 58907 45638 52752 20360 98340 
-
- ## after sort main ## 
-LEVEL: 4
-	25199 34447 43704 61391 56582 61760 7353 80005 51003 66961 29718 87611 764 27263 87077 93934 43668 44465 15018 58907 45638 52752 20360 98340 12203 
-[Level: 4] main: 80005 pend 61391
-[Level: 4] main: 93934 pend 87611
-[Level: 4] main: 98340 pend 58907
- ## with iterators ## 
-[Level: 4] main: 80005 pend 61391
-[Level: 4] main: 93934 pend 87611
-[Level: 4] main: 98340 pend 58907
- ## main ## 
-80005 93934 98340 
- ## merged main ## 
-58907 61391 80005 87611 93934 98340 insert main: 58907
-	43668 44465 15018 58907 
-insert main: 61391
-	25199 34447 43704 61391 
-insert main: 80005
-	56582 61760 7353 80005 
-insert main: 87611
-	51003 66961 29718 87611 
-insert main: 93934
-	764 27263 87077 93934 
-insert main: 98340
-	45638 52752 20360 98340 
- ## Copy ## 
-LEVEL: 1
-	43668 44465 15018 58907 25199 34447 43704 61391 56582 61760 7353 80005 51003 66961 29718 87611 764 27263 87077 93934 45638 52752 20360 98340 
-
+compare 481 and 231
+compare 422 and 217
+ #### size: 5 pairs count: 1 #### 
+compare 481 and 422
+ #### size: 5 pairs count: 0 #### 
  ## after sort main ## 
 LEVEL: 2
-	43668 44465 15018 58907 25199 34447 43704 61391 56582 61760 7353 80005 51003 66961 29718 87611 764 27263 87077 93934 45638 52752 20360 98340 12203 
-[Level: 2] main: 58907 pend 44465
-[Level: 2] main: 61391 pend 34447
-[Level: 2] main: 80005 pend 61760
-[Level: 2] main: 87611 pend 66961
-[Level: 2] main: 93934 pend 27263
-[Level: 2] main: 98340 pend 52752
+	217 422 231 481 381 
  ## with iterators ## 
-[Level: 2] main: 58907 pend 44465
-[Level: 2] main: 61391 pend 34447
-[Level: 2] main: 80005 pend 61760
-[Level: 2] main: 87611 pend 66961
-[Level: 2] main: 93934 pend 27263
-[Level: 2] main: 98340 pend 52752
+[Level: 2] main: 481 pend 422
  ## main ## 
-58907 61391 80005 87611 93934 98340 
+481 
+first pend size: 1
+pend size: 0 jacob: 3
+diff: 2 curr: 3
  ## merged main ## 
-27263 34447 44465 52752 58907 61391 61760 66961 80005 87611 93934 98340 insert main: 27263
-	764 27263 
-insert main: 34447
-	25199 34447 
-insert main: 44465
-	43668 44465 
-insert main: 52752
-	45638 52752 
-insert main: 58907
-	15018 58907 
-insert main: 61391
-	43704 61391 
-insert main: 61760
-	56582 61760 
-insert main: 66961
-	51003 66961 
-insert main: 80005
-	7353 80005 
-insert main: 87611
-	29718 87611 
-insert main: 93934
-	87077 93934 
-insert main: 98340
-	20360 98340 
+422 481 insert main: 422
+	217 422 
+insert main: 481
+	231 481 
  ## Copy ## 
 LEVEL: 1
-	764 27263 25199 34447 43668 44465 45638 52752 15018 58907 43704 61391 56582 61760 51003 66961 7353 80005 29718 87611 87077 93934 20360 98340 
+	217 422 231 481 
 
  ## after sort main ## 
 LEVEL: 1
-	764 27263 25199 34447 43668 44465 45638 52752 15018 58907 43704 61391 56582 61760 51003 66961 7353 80005 29718 87611 87077 93934 20360 98340 12203 
-[Level: 1] main: 27263 pend 764
-[Level: 1] main: 34447 pend 25199
-[Level: 1] main: 44465 pend 43668
-[Level: 1] main: 52752 pend 45638
-[Level: 1] main: 58907 pend 15018
-[Level: 1] main: 61391 pend 43704
-[Level: 1] main: 61760 pend 56582
-[Level: 1] main: 66961 pend 51003
-[Level: 1] main: 80005 pend 7353
-[Level: 1] main: 87611 pend 29718
-[Level: 1] main: 93934 pend 87077
-[Level: 1] main: 98340 pend 20360
+	217 422 231 481 381 
  ## with iterators ## 
-[Level: 1] main: 27263 pend 764
-[Level: 1] main: 34447 pend 25199
-[Level: 1] main: 44465 pend 43668
-[Level: 1] main: 52752 pend 45638
-[Level: 1] main: 58907 pend 15018
-[Level: 1] main: 61391 pend 43704
-[Level: 1] main: 61760 pend 56582
-[Level: 1] main: 66961 pend 51003
-[Level: 1] main: 80005 pend 7353
-[Level: 1] main: 87611 pend 29718
-[Level: 1] main: 93934 pend 87077
-[Level: 1] main: 98340 pend 20360
-odd is 12203
+[Level: 1] main: 422 pend 217
+[Level: 1] main: 481 pend 231
  ## main ## 
-27263 34447 44465 52752 58907 61391 61760 66961 80005 87611 93934 98340 
+422 481 
+first pend size: 3
+pend size: 2 jacob: 3
+diff: 2 curr: 3
+search to: 3
+[bs] compare 381 and 422
+[bs] compare 381 and 217
+insert : 381
+search to: 3
+[bs] compare 231 and 381
+[bs] compare 231 and 217
+insert : 231
+diff: 2 curr: 5
  ## merged main ## 
-764 7353 12203 15018 20360 25199 27263 29718 34447 43668 43704 44465 45638 51003 52752 56582 58907 61391 61760 66961 80005 87077 87611 93934 98340 insert main: 764
-	764 
-insert main: 7353
-	7353 
-insert main: 12203
-	12203 
-insert main: 15018
-	15018 
-insert main: 20360
-	20360 
-insert main: 25199
-	25199 
-insert main: 27263
-	27263 
-insert main: 29718
-	29718 
-insert main: 34447
-	34447 
-insert main: 43668
-	43668 
-insert main: 43704
-	43704 
-insert main: 44465
-	44465 
-insert main: 45638
-	45638 
-insert main: 51003
-	51003 
-insert main: 52752
-	52752 
-insert main: 56582
-	56582 
-insert main: 58907
-	58907 
-insert main: 61391
-	61391 
-insert main: 61760
-	61760 
-insert main: 66961
-	66961 
-insert main: 80005
-	80005 
-insert main: 87077
-	87077 
-insert main: 87611
-	87611 
-insert main: 93934
-	93934 
-insert main: 98340
-	98340 
+217 231 381 422 481 insert main: 217
+	217 
+insert main: 231
+	231 
+insert main: 381
+	381 
+insert main: 422
+	422 
+insert main: 481
+	481 
  ## Copy ## 
 LEVEL: 1
-	764 7353 12203 15018 20360 25199 27263 29718 34447 43668 43704 44465 45638 51003 52752 56582 58907 61391 61760 66961 80005 87077 87611 93934 98340 
+	217 231 381 422 481 
 
 LEVEL: 1
-	764 7353 12203 15018 20360 25199 27263 29718 34447 43668 43704 44465 45638 51003 52752 56582 58907 61391 61760 66961 80005 87077 87611 93934 98340 
+	217 231 381 422 481 
+sorted in 7 comparisons

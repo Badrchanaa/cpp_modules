@@ -1,7 +1,9 @@
 #include "PMergeMe.hpp"
 #include <algorithm>
 #include <iostream>
+#include <cmath>
 
+size_t Compare::comparisons = 0;
 
 void    printVector(array_t arr, size_t level)
 {
@@ -15,6 +17,12 @@ void    printVector(array_t arr, size_t level)
     std::cout << std::endl;
 }
 
+size_t  jacobsthal(unsigned int n)
+{
+    return (
+        (pow(2, n + 1) - pow(-1, n + 1)) / 3
+    );
+}
 
 bool _compare(array_t& array, size_t first, size_t second)
 {
@@ -25,10 +33,16 @@ bool _compare(array_t& array, size_t first, size_t second)
     }
     Compare::comparisons++;
     std::cout << "compare " << array[first] << " and " << array[second] << std::endl;
-    std::lower_bound()
     return (array[first] < array[second]);
 }
-bool _cmp()
+
+
+bool _cmpIterator(const array_t::iterator& lit, const array_t::iterator& rit)
+{
+    Compare::comparisons++;
+    std::cout << "[bs] compare " << *lit << " and " << *rit << std::endl;
+    return (*lit < *rit);
+}
 
 void    _swapPair(array_t& array, size_t index, size_t level)
 {
@@ -44,17 +58,58 @@ void    _swapPair(array_t& array, size_t index, size_t level)
         std::cerr << "first: " << first << " second: " << second << std::endl;
             throw std::runtime_error("SWAP: INDEX OUT OF RANGE");
         }
-        std::cout << "\tswap " << first << " <=> " << second << std::endl;
+        // std::cout << "\tswap " << first << " <=> " << second << std::endl;
         std::swap(array[first], array[second]);
     }
 }
 
-
-void _insertPend(array_t& main, array_t& pend)
+void _insertPend(iter_array_t& main, iter_array_t& pend)
 {
-    for (array_t::iterator it = pend.begin(); it != pend.end(); it++)
+    if (pend.size() == 0)
+        return;
+    unsigned int n;
+    n = 2;
+    iter_array_t::iterator it = pend.begin();
+    std::cout << "first pend size: " << pend.size() << std::endl;
+    main.insert(main.begin(), *it);
+    pend.erase(it);
+    size_t jacobsthalIndex = jacobsthal(n);
+    size_t prevJacob = jacobsthal(n - 1);
+    size_t jacobDiff = jacobsthalIndex - prevJacob;
+    std::cout << "pend size: " << pend.size() << " jacob: " << jacobsthalIndex << std::endl;
+    size_t insertCount = 0;
+    std::cout << "diff: " << jacobDiff << " curr: " << jacobsthalIndex << std::endl;
+    iter_array_t::iterator end = main.begin() + jacobsthalIndex + insertCount;
+    while (jacobDiff <= pend.size())
     {
-        std::lower_bound(main.begin(), main.end(), *it);
+        for (long i = jacobDiff - 1; i >= 0; i--)
+        {
+            iter_array_t::iterator it = pend.begin() + i;
+            if (jacobsthalIndex + insertCount < main.size())
+                end = main.begin() + jacobsthalIndex + insertCount;
+            else
+                end = main.end();
+            std::cout << "search to: " << std::distance(main.begin(), end) << std::endl;
+            iter_array_t::iterator pos = std::upper_bound(main.begin(), end, *it, _cmpIterator);
+            std::cout << "insert : " << **it << std::endl;
+            main.insert(pos, *it);
+            // if (static_cast<size_t>(std::distance(main.begin(), inserted)))
+            //     offset++;
+            // end = main.begin() + jacobsthalIndex + insertCount - offset;
+            pend.erase(it);
+        }
+        n++;
+        insertCount += jacobDiff;
+        prevJacob = jacobsthalIndex;
+        jacobsthalIndex = jacobsthal(n);
+        jacobDiff = jacobsthalIndex - prevJacob;
+        std::cout << "diff: " << jacobDiff << " curr: " << jacobsthalIndex << std::endl;
+    }
+    for (iter_array_t::reverse_iterator it = pend.rbegin(); it != pend.rend(); it++)
+    {
+        iter_array_t::iterator pos = std::upper_bound(main.begin(), main.end(), *it, _cmpIterator);
+        iter_array_t::iterator inserted = main.insert(pos, *it);
+        std::cout << "inserted at " << std::distance(main.begin(), inserted) << " size: " << main.size() << std::endl;
     }
 }
 
@@ -82,16 +137,10 @@ void    mergeInsertSortVector(array_t& array, size_t level)
     }
     mergeInsertSortVector(array, level * 2);
     iter_array_t main; 
-    array_t main_values;
     iter_array_t pend; 
     std::cout << " ## after sort main ## " << std::endl;
     printVector(array, level);
-    for (size_t i = 0; i < num_of_pairs; i++)
-    {
-        size_t firstPairLast = level * (2 * i + 1) - 1;
-        size_t secondPairLast = firstPairLast + level;
-        std::cout << "[Level: " << level << "] main: " << array[secondPairLast] << " pend " << array[firstPairLast] << std::endl;
-    }
+
     array_t::iterator start = array.begin();
     std::cout << " ## with iterators ## " << std::endl;
     for (size_t i = 0; i < num_of_pairs; i++)
@@ -103,7 +152,6 @@ void    mergeInsertSortVector(array_t& array, size_t level)
         std::advance(mainIt, level);
         std::cout << "[Level: " << level << "] main: " << *mainIt << " pend " << *pendIt << std::endl;
         main.push_back(mainIt);
-        main_values.push_back(*mainIt);
         pend.push_back(pendIt);
     }
     if (hasOdd)
@@ -111,8 +159,9 @@ void    mergeInsertSortVector(array_t& array, size_t level)
         size_t odd_index = level * (2 * num_of_pairs + 1) - 1;
         if (odd_index >= array.size())
             throw std::runtime_error("odd index out of range");
-        std::cout << "odd is " << array[odd_index] << std::endl;
         pend.push_back(array.begin() + odd_index);
+        // iter_array_t::iterator pos = std::lower_bound(main.begin(), main.end(), array.begin() + odd_index, _cmpIterator);
+        // main.insert(pos, array.begin() + odd_index);
     }
     std::cout << " ## main ## " << std::endl;
     for (iter_array_t::iterator it = main.begin(); it != main.end(); it++)
@@ -120,16 +169,7 @@ void    mergeInsertSortVector(array_t& array, size_t level)
         std::cout << **it << " ";
     }
     std::cout << std::endl;
-    for (iter_array_t::iterator it = pend.begin(); it != pend.end(); it++)
-    {
-        array_t::value_type pendValue = **it;
-        array_t::iterator pos = std::lower_bound(main_values.begin(), main_values.end(), pendValue);
-        size_t distance = std::distance(main_values.begin(), pos);
-        // std::cout << "value: " << pendValue << " insert pos at " << distance << std::endl;
-        iter_array_t::iterator mainPos = main.begin() + distance;
-        main.insert(mainPos, *it);
-        main_values.insert(pos, pendValue);
-    }
+    _insertPend(main, pend);
     std::cout << " ## merged main ## " << std::endl;
     for (iter_array_t::iterator it = main.begin(); it != main.end(); it++)
     {
