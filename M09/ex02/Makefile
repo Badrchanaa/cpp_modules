@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
-NAME = PMergeMe
-SRCS = main.cpp PMergeMe.cpp
+NAME = PmergeMe
+SRCS = main.cpp PMergeMe.cpp mergeDeque.cpp
 HEADERS = PMergeMe.hpp
 
 all: $(NAME)

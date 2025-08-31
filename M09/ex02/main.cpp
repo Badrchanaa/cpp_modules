@@ -1,32 +1,7 @@
 #include "PMergeMe.hpp"
-#include <sstream>
-#include <iostream>
-#include <algorithm>
+#include <ctime>
 
-array_t parseArgs(std::string args)
-{
-    std::stringstream ss(args);
-    array_t arr;
-
-    unsigned int n;
-    while ((ss >> n))
-    {
-        if (std::find(arr.begin(), arr.end(), n) != arr.end())
-        {
-            std::cerr << "Error: Argument cannot contain duplicates." << std::endl;
-            exit(EXIT_FAILURE);
-        }
-        arr.push_back(n) ;
-    }
-   if (!ss.eof()) 
-   {
-    std::cerr << "invalid argument" << std::endl;
-    exit(EXIT_FAILURE);
-   }
-   return arr;
-}
-
-void isSorted(array_t& array)
+template <typename Container> void isSorted(Container& array)
 {
     for (size_t i = 0; i < array.size() - 1; i++)
     {
@@ -35,38 +10,32 @@ void isSorted(array_t& array)
     }
 }
 
-void test(array_t vectorArray)
-{
-    size_t pairSize = 1;
-    printVector(vectorArray);
-    while (vectorArray.size() / (pairSize * 2) >= 1)
-    {
-        std::cout << "--> pairsize: " << pairSize << std::endl;
-        for (size_t i = 0; i <= vectorArray.size() - pairSize * 2; i+= pairSize * 2)
-        {
-            size_t firstPairLast = i + pairSize - 1;
-            size_t secondPairLast = firstPairLast + pairSize;
-            if (vectorArray[firstPairLast] > vectorArray[secondPairLast])
-            {
-                _swapPair(vectorArray, i, pairSize);
-            }
-        }
-        pairSize *= 2;
-    }
-    printVector(vectorArray);
-}
-
 int main(int ac, char **av)
 {
     if (ac == 1)
         return 1;
-    
-    array_t arr = parseArgs(av[1]);
-    printVector(arr);
-    mergeInsertSortVector(arr);
-    printVector(arr);
-    isSorted(arr);
-    std::cout << "sorted in " << Compare::comparisons << " comparisons" << std::endl;
+    {
+        clock_t start = clock();
+        vec_t vector;
+        PmergeMe::fillContainer(ac, av, vector);
+        mergeInsertSortVector(vector);
+        clock_t end = clock();
+        std::cout << "std::vector took " << ( double(end - start) / CLOCKS_PER_SEC) * 10e3 << "ms" << std::endl;
+        printVector(vector);
+        isSorted(vector);
+        std::cout << "vector sorted in " << Compare::comparisons << " comparisons" << std::endl;
+    } 
+    {
+        clock_t start = clock();
+        deque_t deque;
+        PmergeMe::fillContainer(ac, av, deque);
+        mergeInsertSortDeque(deque);
+        clock_t end = clock();
+        std::cout << "std::deque took " << ( double(end - start) / CLOCKS_PER_SEC) * 10e3 << "ms" << std::endl;
+        printDeque(deque);
+        isSorted(deque);
+        std::cout << "deque sorted in " << Compare::comparisons_deque << " comparisons" << std::endl;
+    }
     return 0;
     // mergeInsertSortVector(arr);
 
